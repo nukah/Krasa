@@ -1,0 +1,14 @@
+<%= render :partial => 'admin/shared/product_sub_menu' %>
+
+<%= render 'shared/error_messages', :target => @type %>
+
+<%= form_for :type, :url => admin_types_path do |f| %>
+<fieldset>
+  <legend><%= t("new_type")%></legend>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <p class="form-buttons">
+	<%= button t("actions.create") %>
+	<%= t("or") %> <%= link_to t("actions.cancel") %>
+  </p>
+</fieldset>
+<% end %>

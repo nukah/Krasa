@@ -1,0 +1,10 @@
+<% if current_user %>
+	<%= content_tag :div, :id => 'sidebar_login' do -%>
+		<%= link_to t('my_account'), account_path %>
+		<%= link_to t('logout'), destroy_user_session_path %>
+	<% end %>
+<% else %>
+	<%= content_tag :div, :id => 'sidebar_login' do -%>
+		<%= link_to t('log_in'), login_path %>
+	<% end %>
+<% end %>

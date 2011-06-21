@@ -1,0 +1,9 @@
+<%= form_tag products_url, :method => :get do %>
+	<%= label_tag 'search', t(:search) %>
+	<%= text_field_tag :keywords, params[:keywords], :id => 'search-query' %>
+	<%= submit_tag t(:search), :name => nil, :id => 'search-query-submit' %>
+<% end %>
+<%= content_tag :div, :id => 'search-example' do -%>
+	Тест
+<%= link_to 'example', '#' -%>
+<% end -%>

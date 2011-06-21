@@ -1,0 +1,35 @@
+<%= render :partial => 'admin/shared/product_sub_menu' %>
+
+<div class='toolbar'>
+  <ul class='actions'>
+    <li id="new_type_link">
+      <%= button_link_to t("new_type"), new_admin_type_url, {:remote => true, :icon => 'add', 'data-update' => 'new_type', :id => 'new_type_link'} %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+<h1><%= t("types") %></h1>
+
+<div id="new_type"></div>
+
+<table class="index" id='listing_types'>
+  <thead>
+    <tr>
+      <th><%= t("name") %></th>
+      <th><%= t("presentation") %></th>
+	  <th><%= t("first") %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @types.each do |type| %>
+      <tr id="<%= dom_id type %>">
+        <td><%= type.name %></td>
+        <td><%= type.presentation %></td>
+		<td><%= type.first ? t("yes") : t("no") %></td>
+		<td><%= link_to :delete, t("cancel")%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

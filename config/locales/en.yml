@@ -1,0 +1,25 @@
+ru:
+  activerecord:
+    errors:
+        models:
+            type:
+                attributes:
+                    name:
+                        blank: "Имя"
+                    presentation:
+                        blank: "Отображение"
+  number:
+      currency:
+            format:
+                format: "%n %u"
+                unit: "грн."
+                precision: 1
+                separator: '.'
+                delimiter: ','
+  support:
+      array:
+            last_word_connector: " "
+  visibility: "Видимость"
+  types: "Типы"
+  new_type: "Новый тип"
+  type_first: "Тип для главной страницы"
