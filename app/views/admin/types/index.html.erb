@@ -28,7 +28,7 @@
         <td><%= type.name %></td>
         <td><%= type.presentation %></td>
 		<td><%= type.first ? t("yes") : t("no") %></td>
-		<td><%= link_to :delete, t("cancel")%></td>
+		<td><%= link_to t("delete"), admin_type_path(type), :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,7 @@
 class Admin::TypesController < Admin::ResourceController
   def new
     render :layout => !request.xhr?
+	@type = Type.new
   end
   
   # def create
@@ -13,7 +14,24 @@ class Admin::TypesController < Admin::ResourceController
   #   end
   # end
   
+  def create
+	@type ||= params[:type]
+	if @type.save
+	  redirect_to :admin_types
+	else
+	  redirect_to :new_admin_type
+	end
+  end
+
+  def destroy
+	@type = Type.find(params[:id])
+	if @type.destroy
+	  flash[:notice] = "Successful"
+	  redirect_to :admin_types
+	end
+  end
+  
   def index
-    @types = Type.find(:all)
+    @types = Type.all
   end
 end

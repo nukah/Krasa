@@ -6,7 +6,7 @@ class Type < ActiveRecord::Base
   has_many :type_taxonomies, :dependent => :destroy
   has_many :taxons, :through => :type_taxonomies, :source => :taxon
   
-  attr_accessor :name 
+  attr_accessible :name, :presentation, :first
   private
   def check_for_being_first
     if self.first?
