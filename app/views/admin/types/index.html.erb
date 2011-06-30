@@ -28,7 +28,11 @@
         <td><%= type.name %></td>
         <td><%= type.presentation %></td>
 		<td><%= type.first ? t("yes") : t("no") %></td>
-		<td><%= link_to t("delete"), admin_type_path(type), :method => :delete %></td>
+		<td>
+		  <%= link_to_edit(type) %>
+		  &nbsp; 
+		  <%= link_to_delete(type) %>
+		</td>
       </tr>
     <% end %>
   </tbody>

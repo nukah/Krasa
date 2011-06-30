@@ -4,16 +4,6 @@ class Admin::TypesController < Admin::ResourceController
 	@type = Type.new
   end
   
-  # def create
-  #   @type ||= Type.new(params[:type])
-  #   if @type.save
-  #     redirect_to admin_types_path
-  #   else
-  #     redirect_to admin_types_new_path
-  #     flash[:notice] = "Error"
-  #   end
-  # end
-  
   def create
 	@type ||= params[:type]
 	if @type.save
@@ -26,9 +16,22 @@ class Admin::TypesController < Admin::ResourceController
   def destroy
 	@type = Type.find(params[:id])
 	if @type.destroy
-	  flash[:notice] = "Successful"
-	  redirect_to :admin_types
+	  flash[:notice] = I18n.t('resource_controller.successfuly_removed')
+	  respond_with(@type) do |format|
+        format.html { redirect_to collection_url }
+        format.js   { render :partial => "/admin/shared/destroy" }
+      end
+	else
+	  flash[:notice] = t('error')
+	  respond_with(@type) do |format|
+		format.html { redirect_to collection_url }
+	  end
 	end
+  end
+  
+  def edit
+	@type = Type.find(params[:id])
+	
   end
   
   def index
