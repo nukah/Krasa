@@ -31,7 +31,12 @@ class Admin::TypesController < Admin::ResourceController
   
   def edit
 	@type = Type.find(params[:id])
-	
+	@taxons = @type.taxons
+	@products_count = Hash.new
+	@taxons.each do |taxon|
+	  @products_count[taxon.id] = Product.joins(:taxons).where('taxons.parent_id' => taxon.id).count
+  end
+  logger.info @products_count
   end
   
   def index

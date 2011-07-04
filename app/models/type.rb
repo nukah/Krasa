@@ -3,8 +3,8 @@ class Type < ActiveRecord::Base
   
   before_save :check_for_being_first
     
-  has_many :type_taxonomies, :dependent => :destroy
-  has_many :taxons, :through => :type_taxonomies, :source => :taxon
+  has_many :type_taxons, :dependent => :destroy
+  has_many :taxons, :through => :type_taxons, :foreign_key => "type_id"
   
   attr_accessible :name, :presentation, :first
   private

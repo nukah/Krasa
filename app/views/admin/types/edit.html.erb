@@ -1,2 +1,6 @@
 <%= render :partial => 'admin/shared/product_sub_menu' %>
+<%= @type.name %>
 
+<% @taxons.each do |taxon| %>
+  <%= taxon.name %> <%=  %>
+<% end %>

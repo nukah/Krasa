@@ -12,5 +12,5 @@ gem 'unicorn'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-
+gem "ckfu", :git => 'git://github.com/r38y/ck_fu.git', :branch => "master"
 gem "redesign", :path => "redesign", :require => "redesign"
