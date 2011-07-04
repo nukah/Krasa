@@ -1,3 +1,6 @@
 ru:
  new_type: "Новый тип"   
  types: "Типы"
+ type: "Тип"
+ editing_type: "Изменение типа"
+ visibility: "Видимость"

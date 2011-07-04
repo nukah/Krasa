@@ -1,6 +1,10 @@
 <%= render :partial => 'admin/shared/product_sub_menu' %>
-<%= @type.name %>
 
-<% @taxons.each do |taxon| %>
-  <%= taxon.name %> <%=  %>
+<h1><%= t("editing_type") %></h1>
+
+<%= render 'shared/error_messages', :target => @type %>
+
+<%= form_for(:type, :url => object_url, :html => { :method => :put }) do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <%= render :partial => 'admin/shared/edit_resource_links' %>
 <% end %>
