@@ -14,7 +14,6 @@ class Admin::TypesController < Admin::ResourceController
   end
 
   def destroy
-  	@type = Type.find(params[:id])
   	if @type.destroy
   	  flash[:notice] = I18n.t('resource_controller.successfuly_removed')
   	  respond_with(@type) do |format|
@@ -30,7 +29,6 @@ class Admin::TypesController < Admin::ResourceController
   end
   
   def edit
-  	@type = Type.find(params[:id])
   	@taxons = @type.taxons
   	@products_count = Hash.new
   	@taxons.each do |taxon|
@@ -44,15 +42,20 @@ class Admin::TypesController < Admin::ResourceController
   
   # ajax method to remove taxon from type
   def remove
+    ## TODO form_for @taxons
+    if @type.taxons.delete_all(:taxon_id => params[:taxon_id])
+      flash.notice = t('taxon_removed_successfully')
+    else
+      flash[:error] = t('error')
+    end
+    redirect_to admin_type_edit(@type)
   end
   
   def index
     @types = Type.all
   end
   
-  protected
-  # # PRIMARY GOAL
-  def available_taxons
-    Taxon.where(:parent_id => nil, :id => @taxons)
+  def available
+    @available = Taxon.where(:parent_id => nil).where("id not in (?)", @taxons.map(&:id)).all
   end
 end
