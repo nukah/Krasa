@@ -1,12 +1,14 @@
 Krasaonline::Application.routes.draw do
   namespace :admin do 
-        resources :types do
-          member do
-            get 'available'
-            put 'add'
-            put 'remove'
-          end
-        end
+	resources :types do
+	  member do
+		post :add
+		get :remove
+	  end
+	  collection do
+		get :available
+	  end
+	end
   end
   # first created -> highest priority.
 
