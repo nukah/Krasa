@@ -56,6 +56,6 @@ class Admin::TypesController < Admin::ResourceController
   end
   
   def available
-    @available = Taxon.where(:parent_id => nil).where("id not in (?)", @taxons.map(&:id)).all
+    @available_taxons = Taxon.where(:parent_id => nil).where("id not in (?)", @taxons.map(&:id)).all
   end
 end
