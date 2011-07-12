@@ -15,13 +15,13 @@ class Admin::TypesController < Admin::ResourceController
 
   def destroy
   	if @type.destroy
-  	  flash[:notice] = I18n.t('resource_controller.successfuly_removed')
+  	  flash[:notice] = "Successfully removed" 
   	  respond_with(@type) do |format|
           format.html { redirect_to collection_url }
           format.js   { render :partial => "/admin/shared/destroy" }
         end
   	else
-  	  flash[:notice] = t('error')
+  	  flash[:error] = "Error while type delete"
   	  respond_with(@type) do |format|
   		format.html { redirect_to collection_url }
   	  end

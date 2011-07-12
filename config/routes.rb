@@ -2,7 +2,7 @@ Krasaonline::Application.routes.draw do
   namespace :admin do 
 	resources :types do
 	  member do
-		post :add
+		put :add
 		get :remove
 	  end
 	  collection do

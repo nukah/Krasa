@@ -10,7 +10,7 @@ class Type < ActiveRecord::Base
   private
   def check_for_being_first
     if self.first?
-      Type.update_all(:first => false, :name => !self.name)
+      Type.where("name <> '{self.name}'").update_all(:first => false)
     end
   end
   

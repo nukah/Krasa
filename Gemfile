@@ -14,5 +14,5 @@ group :test, :development do
     gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
     gem 'rspec'
     gem 'rspec-rails'
+    gem 'faker'
 end
-

@@ -1,11 +1,11 @@
 FactoryGirl.define do
-  factory :taxonomy do
-	name { Factory.next(:taxonomy_name) }
+  Factory.define(:taxonomy) do |t|
+	t.name { Factory.next(:taxonomy_name) }
   end
   
-  factory :taxons, :class => Taxon do
-	name { Factory.next(:taxon_name) }
-	association :taxonomy
+  Factory.define(:taxons, :class => Taxon) do |t|
+	t.name { Factory.next(:taxon_name) }
+	t.association :taxonomy
   end
 
   sequence :taxonomy_name do |id|

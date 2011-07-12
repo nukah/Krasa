@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :type, :class => Type do
+  Factory.define(:type, :class => Type) do
 	name "Test type"
 	presentation "Testing Presentation"
 	first true
