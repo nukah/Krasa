@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: git://github.com/spree/spree_i18n.git
-  revision: a185d160047ce54f07bd47f7d417d9e2681fbb07
+  revision: 3e3b8f83ac020fef1c6a59021d65208cad28146c
   specs:
     spree_i18n (1.0.0)
       spree_core (>= 0.30.0)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: git://github.com/thoughtbot/factory_girl_rails.git
-  revision: dde5502e80a3fce79d2e105509c86406138b341e
+  revision: e36a7c9a11f2c3c42091e23bd0996a733220a5c3
   specs:
     factory_girl_rails (1.1.rc1)
       factory_girl (~> 2.0.0.rc)
@@ -182,6 +182,7 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.6.0)
+    spork (0.9.0.rc9)
     sqlite3 (1.3.3)
     state_machine (0.9.4)
     stringex (1.0.3)
@@ -209,6 +210,7 @@ DEPENDENCIES
   redesign!
   rspec
   rspec-rails
+  spork (= 0.9.0.rc9)
   spree!
   spree_i18n!
   sqlite3

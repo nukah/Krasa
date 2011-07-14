@@ -9,10 +9,11 @@ gem 'activemerchant'
 gem 'unicorn'
 gem "redesign", :path => "redesign", :require => "redesign"
 
-group :test, :development do 
+group :test do 
     gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git'
     gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
     gem 'rspec'
     gem 'rspec-rails'
     gem 'faker'
+    gem 'spork', '0.9.0.rc9'
 end

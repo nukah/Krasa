@@ -1,20 +1,17 @@
 FactoryGirl.define do
-  Factory.define(:type, :class => Type) do
-	name "Test type"
-	presentation "Testing Presentation"
-	first true
+  Factory.define(:type, :class => Type) do |t|
+	t.name "Test type"
+	t.presentation "Testing Presentation"
+	t.first true
   end
 
-  factory :invalid_type, :class => Type do
-	name ""
-	presentation "Invalid test presentation"
-	first false
+  Factory.define(:invalid_type, :class => Type) do |t|
+	t.name ""
+	t.presentation "Invalid test presentation"
+	t.first false
   end
 
-  factory :type_with_taxons, :class => Type do
-	name "Type with taxons"
-	presentation "Type with taxons presentation"
-	first false
-	taxons { Factory.build(:taxons, 4) }
+  Factory.define(:type_with_taxons, :class => Type) do |t|
+	t.taxons { Factory.build(:taxons, 4) }
   end
 end

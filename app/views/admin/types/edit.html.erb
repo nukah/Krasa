@@ -9,37 +9,28 @@
   <%= render :partial => 'admin/shared/edit_resource_links' %>
 <% end %>
 
-<%= form_tag('#') do %>
-  <label><%= t('search') %>:</label>
-  <input id="searchtext" size="25">
-<% end %>
+<%= render :partial => 'admin/types/list' %>
+
+<button id="searchtext"><span>Get</span></button>
 
 <%= javascript_tag do %>
   function search_for_taxons(){
     jQuery.ajax({
-     data: {q: jQuery("#searchtext").val() }, 
+     data: {type: <%= @type.id %> }, 
      dataType: 'script',
      success: function(request){
        jQuery('#search_hits').html(request);
      },
      type: 'post',
-     url: '<%= available_admin_types_path %>'
+     url: '<%= available_admin_types_url %>'
     });
   }
 
-  jQuery("#searchtext").keypress(function (e) {
-    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+  jQuery("#searchtext").click(function () {
       search_for_taxons();
-
-      return false;
-    } else {
-       return true;
-    }
+	  return false;
   });
 
-  jQuery("#searchtext").delayedObserver(function() {
-    search_for_taxons();
-  }, 0.75);
-<% end %>
+  <% end %>
 <br/>
 <div id="search_hits"></div>

@@ -1,0 +1,24 @@
+<h4> Available Taxons </h4>
+
+<table class="index">
+  <thead>
+    <tr>
+      <th><%= t("name") %></th>
+      <th>Amount of products in taxon</th>
+      <th><%= t("action") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tax.each do |taxon| %>
+      <tr id="<%= dom_id(taxon, :sel) %>">
+        <td><%= taxon.name %></td>
+        <td><%= @products_count[taxon.id]%></td>        
+        <td>
+        	<%= link_to icon('delete') + ' ' + t("select"),
+                            remove_taxon_admin_type_path(@type, taxon),
+                           :remote => true, :class => 'iconlink' %>
+        </td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

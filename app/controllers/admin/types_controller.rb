@@ -1,4 +1,5 @@
 class Admin::TypesController < Admin::ResourceController
+  
   def new
     render :layout => !request.xhr?
   	@type = Type.new
@@ -29,26 +30,35 @@ class Admin::TypesController < Admin::ResourceController
   end
   
   def edit
-  	@taxons = @type.taxons
+  	@tax = @type.taxons
   	@products_count = Hash.new
-  	@taxons.each do |taxon|
+  	@tax.each do |taxon|
   	  @products_count[taxon.id] = Product.joins(:taxons).where('taxons.parent_id' => taxon.id).count
     end
   end
-  
-  # ajax method to add taxon to type
+ 
+
+  #TODO: refresh page after adding/removing
   def add
+	@taxon = Taxon.find(params[:taxon_id])
+	if @type.taxons << @taxon
+	  flash[:notice] = "Taxon added"
+	  respond_with(@type) do |format|
+		format.js { redirect_to edit_admin_type_path(@type) }
+	  end
+	else
+	  flash[:error] = "Error while adding taxon"
+	end
   end
   
-  # ajax method to remove taxon from type
   def remove
-    ## TODO form_for @taxons
-    if @type.taxons.delete_all(:taxon_id => params[:taxon_id])
+	@taxon = Taxon.find(params[:taxon_id])
+	if @type.taxons.delete(@taxon)
       flash.notice = t('taxon_removed_successfully')
+	  redirect_to edit_admin_type_url(@type)
     else
       flash[:error] = t('error')
     end
-    redirect_to admin_type_edit(@type)
   end
   
   def index
@@ -56,6 +66,8 @@ class Admin::TypesController < Admin::ResourceController
   end
   
   def available
-    @available_taxons = Taxon.where(:parent_id => nil).where("id not in (?)", @taxons.map(&:id)).all
+	@type = Type.find(params[:type])
+	@taxons = @type.taxons
+    @available_taxons ||= @taxons.empty? ? Taxon.top : Taxon.top.where("id not in (?)", @taxons.map(&:id)).all										  
   end
 end
