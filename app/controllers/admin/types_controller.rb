@@ -1,5 +1,4 @@
 class Admin::TypesController < Admin::ResourceController
-  
   def new
     render :layout => !request.xhr?
   	@type = Type.new
@@ -16,13 +15,13 @@ class Admin::TypesController < Admin::ResourceController
 
   def destroy
   	if @type.destroy
-  	  flash[:notice] = "Successfully removed" 
+  	  flash[:notice] = I18n.t('resource_controller.successfully_removed')
   	  respond_with(@type) do |format|
           format.html { redirect_to collection_url }
           format.js   { render :partial => "/admin/shared/destroy" }
         end
   	else
-  	  flash[:error] = "Error while type delete"
+  	  flash[:error] = I18n.t('errors.delete_type') 
   	  respond_with(@type) do |format|
   		format.html { redirect_to collection_url }
   	  end
@@ -40,25 +39,34 @@ class Admin::TypesController < Admin::ResourceController
 
   #TODO: refresh page after adding/removing
   def add
-	@taxon = Taxon.find(params[:taxon_id])
-	if @type.taxons << @taxon
-	  flash[:notice] = "Taxon added"
+	  @taxon = Taxon.find(params[:taxon_id])
+  	if @type.taxons << @taxon
+  	  flash[:notice] =  I18n.t('resource_controller.successfully_added')
+  	  render :action => :edit
+  	else
+  	  flash.now[:error] = I18n.t("errors.add_taxon_to_type")
+    end
+
+  rescue ActiveRecord::RecordNotFound
 	  respond_with(@type) do |format|
-		format.js { redirect_to edit_admin_type_path(@type) }
-	  end
-	else
-	  flash[:error] = "Error while adding taxon"
-	end
+  	  format.js { redirect_to edit_admin_type_path(@type) }
+  	end
   end
-  
+
   def remove
 	@taxon = Taxon.find(params[:taxon_id])
-	if @type.taxons.delete(@taxon)
-      flash.notice = t('taxon_removed_successfully')
-	  redirect_to edit_admin_type_url(@type)
-    else
-      flash[:error] = t('error')
-    end
+	render :update do |r|
+	  if @type.taxons.delete(@taxon)
+		flash.notice = I18n.t('resource_controller.successfully_removed')
+		r.reload
+	  else
+		flash[:error] = I18n.t("errors.remove_taxon_from_type")
+		r.reload
+	  end
+	end
+  rescue ActiveRecord::RecordNotFound
+	flash[:error] = I18n.t("record_not_found", :type => 'taxon')
+	redirect_to edit_admin_type_path(@type)
   end
   
   def index

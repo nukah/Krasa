@@ -5,6 +5,8 @@ gem 'sqlite3'
 gem 'spree', :git => 'git://github.com/spree/spree.git', :tag => "v0.60.1"
 
 gem 'spree_i18n', :git => 'git://github.com/spree/spree_i18n.git'
+gem 'spree_related_products', :git => 'git://github.com/spree/spree_related_products.git', :branch => '0.60.1'
+# gem 'spree_social', :git => 'git://github.com/spree/spree_social.git'
 gem 'activemerchant'
 gem 'unicorn'
 gem "redesign", :path => "redesign", :require => "redesign"

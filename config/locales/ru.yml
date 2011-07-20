@@ -4,3 +4,23 @@ ru:
  type: "Тип"
  editing_type: "Изменение типа"
  visibility: "Видимость"
+ errors:
+    delete_type: "Ошибка при удалении типа"
+    add_taxon_to_type: "Ошибка при добавлении таксона к типу"
+    remove_taxon_from_type: "Ошибка при удалении таксона из типа"
+    record_not_found: "%{type} не найден"
+ activerecord:
+    errors:
+        messages:
+            record_invalid: "Неправильная запись"
+ new_relation_type: "Новый тип связи"
+ discount_amount: "Размер скидки"
+ related_product_discount: "Скидка на связанные товары"
+ relation_types: "Тип связи"
+ applies_to: "Распространяется на"
+ editing_relation_type: "Редактирование типа связи"
+ related_products: "Похожие товары"
+ add_related_product: "Добавить похожий товар"
+ name_or_sku: "Имя или артикул"
+ manage_relation_types: "Управление связями товаров"
+ no_relation_types: "Вам нужно настроить типы связей перед тем как использовать эту возможность"
