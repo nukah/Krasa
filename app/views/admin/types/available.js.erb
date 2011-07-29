@@ -7,7 +7,7 @@
 </script>
 
 <h4><%= t('available_taxons') %></h4>
-<table class="index">
+<table class="index" id = "available_index">
   <thead>
     <tr>
       <th><%= t("name") %></th>
@@ -16,7 +16,7 @@
   </thead>
   <tbody>
     <% @available_taxons.each do |taxon| %>
-      <tr id="<%= dom_id(taxon, :sel) %>">
+      <tr id="<%= dom_id(taxon, :available) %>">
         <td><%= taxon.name %></td>
         <td class="actions">
           <%= link_to icon('add') + ' ' + t("select"),
@@ -32,6 +32,13 @@
 </table>
 
 <%= javascript_tag do %>
-  <TODO jQuery function:>
-  <On click #add -> ajax call -> update table "current taxons">
+$('[id^=available_taxon_]').each(function(){
+  var block = $(this);
+  block.find('a.iconlink').click(function () {
+      block.fadeOut('slow', function() { 
+        block.remove();
+        $('table#active_index tbody').append(1);
+     });
+  });
+});
 <% end %>

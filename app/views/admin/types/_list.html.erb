@@ -1,6 +1,6 @@
 <h4> Available Taxons </h4>
 
-<table class="index">
+<table class="index" id = "active_index">
   <thead>
     <tr>
       <th><%= t("name") %></th>
@@ -15,8 +15,7 @@
         <td><%= @products_count[taxon.id]%></td>        
         <td>
         	<%= link_to icon('delete') + ' ' + t("select"),
-                            remove_taxon_admin_type_path(@type, taxon),
-                           :remote => true, :class => 'iconlink' %>
+                            remove_taxon_admin_type_path(@type, taxon), :remote => true, :class => 'iconlink', :id => 'remove_taxon' %>
         </td>        
       </tr>
     <% end %>
@@ -24,6 +23,10 @@
 </table>
 
 <%= javascript_tag do %>
-  <TODO jQuery function:>
-  <On click #remove -> ajax call -> update table "current taxons", remove that id>
+$('[id^=sel_taxon_]').each(function(){
+  var block = $(this);
+  block.find('a.iconlink').click(function () {
+      block.fadeOut('slow', function() { block.remove(); return false; });
+  });
+});
 <% end %>

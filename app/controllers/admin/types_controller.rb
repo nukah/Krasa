@@ -40,33 +40,36 @@ class Admin::TypesController < Admin::ResourceController
   #TODO: refresh page after adding/removing
   def add
 	  @taxon = Taxon.find(params[:taxon_id])
-  	if @type.taxons << @taxon
-  	  flash[:notice] =  I18n.t('resource_controller.successfully_added')
-  	  render :action => :edit
-  	else
-  	  flash.now[:error] = I18n.t("errors.add_taxon_to_type")
+    if @type.taxons << @taxon
+      true
+    else
+      flash.now[:error] = I18n.t("errors.add_taxon_to_type")
     end
+  # 	if @type.taxons << @taxon
+  # 	  flash[:notice] =  I18n.t('resource_controller.successfully_added')
+  # 	  render :action => :edit
+  # 	else
+  # 	  flash.now[:error] = I18n.t("errors.add_taxon_to_type")
+  #   end
 
-  rescue ActiveRecord::RecordNotFound
-	  respond_with(@type) do |format|
-  	  format.js { redirect_to edit_admin_type_path(@type) }
-  	end
+  # rescue ActiveRecord::RecordNotFound
+	 #  respond_with(@type) do |format|
+  # 	  format.js { redirect_to edit_admin_type_path(@type) }
+  # 	end
   end
 
   def remove
-	@taxon = Taxon.find(params[:taxon_id])
-	render :update do |r|
+    @taxon = Taxon.find(params[:taxon_id])
+	# render :update do |r|
 	  if @type.taxons.delete(@taxon)
-		flash.notice = I18n.t('resource_controller.successfully_removed')
-		r.reload
-	  else
-		flash[:error] = I18n.t("errors.remove_taxon_from_type")
-		r.reload
-	  end
-	end
-  rescue ActiveRecord::RecordNotFound
-	flash[:error] = I18n.t("record_not_found", :type => 'taxon')
-	redirect_to edit_admin_type_path(@type)
+	 	  flash.notice = I18n.t('resource_controller.successfully_removed')
+	   else
+	 	  flash[:error] = I18n.t("errors.remove_taxon_from_type")
+   end
+	# end
+ #  rescue ActiveRecord::RecordNotFound
+	# flash[:error] = I18n.t("record_not_found", :type => 'taxon')
+	# redirect_to edit_admin_type_path(@type)
   end
   
   def index
