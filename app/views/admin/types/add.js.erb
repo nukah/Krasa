@@ -1,0 +1,5 @@
+jQuery('[id=<%= dom_id(taxon, :available) %>]').fadeOut('slow', function() { 
+	$(this).remove(); 
+}); 
+jQuery('table#active_index tbody').append('<tr id="<%= dom_id(taxon, :sel) %>"><td><%= taxon.name %></td><td><%= product_count %></td><td><%= escape_javascript( link_to icon("delete") + " " + t("select"),
+	remove_taxon_admin_type_path(@type, taxon), :remote => true, :class => "iconlink") %></td></tr>');

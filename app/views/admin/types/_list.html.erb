@@ -21,12 +21,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= javascript_tag do %>
-$('[id^=sel_taxon_]').each(function(){
-  var block = $(this);
-  block.find('a.iconlink').click(function () {
-      block.fadeOut('slow', function() { block.remove(); return false; });
-  });
-});
-<% end %>

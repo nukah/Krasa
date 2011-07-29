@@ -18,15 +18,15 @@
     <tr>
       <th><%= t("name") %></th>
       <th><%= t("presentation") %></th>
-	  <th><%= t("first") %></th>
-      <th></th>
+	    <th><%= t("first") %></th>
+      <th><%= t("action") %></th>
     </tr>
   </thead>
   <tbody>
     <% @types.each do |type| %>
       <tr id="<%= dom_id type %>">
         <td><%= type.name %></td>
-        <td><%= type.presentation %></td>
+        <td><%= type.presentation %></td> 
 		<td><%= type.first ? t("yes") : t("no") %></td>
 		<td>
 		  <%= link_to_edit(type) %>

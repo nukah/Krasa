@@ -30,15 +30,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= javascript_tag do %>
-$('[id^=available_taxon_]').each(function(){
-  var block = $(this);
-  block.find('a.iconlink').click(function () {
-      block.fadeOut('slow', function() { 
-        block.remove();
-        $('table#active_index tbody').append(1);
-     });
-  });
-});
-<% end %>
