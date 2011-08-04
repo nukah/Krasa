@@ -5,10 +5,8 @@ class Type < ActiveRecord::Base
     
   has_many :type_taxons, :dependent => :destroy
   has_many :taxons, :through => :type_taxons, :foreign_key => "type_id"
-  
-  attr_accessible :name, :presentation, :first
 
-  scope :products, lambda()
+  attr_accessible :name, :presentation, :first
 
   private
   def check_for_being_first

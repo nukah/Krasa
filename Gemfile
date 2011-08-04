@@ -10,6 +10,14 @@ gem 'spree_related_products', :git => 'git://github.com/spree/spree_related_prod
 gem 'activemerchant'
 gem "redesign", :path => "redesign", :require => "redesign"
 
+group :production do
+    gem 'jammit'
+end
+
+group :development do 
+    gem 'active_reload'
+end
+
 group :test do 
     gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git'
     gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
