@@ -63,8 +63,8 @@ class Admin::TypesController < Admin::ResourceController
         p.reload
       end
     end
-    rescue ActiveRecord::RecordNotFound
-	  flash[:error] = I18n.t("record_not_found", :type => 'taxon')
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = I18n.t("record_not_found", :type => 'taxon')
     redirect_to edit_admin_type_path(@type)
   end
   

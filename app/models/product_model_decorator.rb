@@ -4,4 +4,16 @@ Product.class_eval do
                                                  'JOIN type_taxons tt ON tt.taxon_id = t.parent_id')
                                           .where('tt.type_id = ?', type) 
                           }
+  public
+  
+  def get_taxonomies
+    @taxonomies ||= []
+    Type.of_product(self.id).taxons.each do |category|
+      tax = Hash.new
+      tax.label = category.name
+      tax.subcategories = Taxon.where('parent_id => ?', category.id)
+      @taxonomies << tax
+    end 
+    return @taxonomies
+  end
 end

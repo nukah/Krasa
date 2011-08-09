@@ -16,4 +16,7 @@ ProductsController.class_eval do
 
     respond_with(@product)
   end
+  def index
+    @products = Product.of_type(Type.where(:first => true))
+  end
 end
