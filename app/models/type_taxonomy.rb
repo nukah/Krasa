@@ -1,11 +1,11 @@
-class TypeTaxon < ActiveRecord::Base
+class TypeTaxonomy < ActiveRecord::Base
   belongs_to :type
-  belongs_to :taxon
+  belongs_to :taxonomy
   validates :type, :presence => true
   validate :uniqueness_of_pair
   
   def uniqueness_of_pair
     errors.add(:base, "such pair already exists") if
-      TypeTaxon.where(:type_id => type_id, :taxon_id => taxon_id).exists?
+      TypeTaxonomy.where(:type_id => type_id, :taxonomy_id => taxonomy_id).exists?
   end
 end

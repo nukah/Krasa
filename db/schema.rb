@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110630182217) do
+ActiveRecord::Schema.define(:version => 20110811164901) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -528,13 +528,13 @@ ActiveRecord::Schema.define(:version => 20110630182217) do
     t.datetime "updated_at"
   end
 
-  create_table "type_taxons", :id => false, :force => true do |t|
+  create_table "type_taxonomies", :id => false, :force => true do |t|
     t.integer "type_id"
-    t.integer "taxon_id"
+    t.integer "taxonomy_id"
   end
 
-  add_index "type_taxons", ["taxon_id"], :name => "index_type_taxons_on_taxon_id"
-  add_index "type_taxons", ["type_id"], :name => "index_type_taxons_on_type_id"
+  add_index "type_taxonomies", ["taxonomy_id"], :name => "index_type_taxonomies_on_taxonomy_id"
+  add_index "type_taxonomies", ["type_id"], :name => "index_type_taxonomies_on_type_id"
 
   create_table "types", :force => true do |t|
     t.string   "name"

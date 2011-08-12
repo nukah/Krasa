@@ -57,9 +57,9 @@ GIT
 
 GIT
   remote: git://github.com/thoughtbot/factory_girl.git
-  revision: 841e012c5dffa415571f85f11ca53197d49dd695
+  revision: 1b978a3ec955522e9f2920a3489980fc76bdc787
   specs:
-    factory_girl (2.0.2)
+    factory_girl (2.0.3)
 
 GIT
   remote: git://github.com/thoughtbot/factory_girl_rails.git
@@ -182,7 +182,7 @@ GEM
       activesupport (~> 3.0)
     rd_resource_controller (1.0.1)
     rd_unobtrusive_date_picker (0.1.0)
-    rdoc (3.9.1)
+    rdoc (3.9.2)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)

@@ -12,7 +12,7 @@
     <% @tax.each do |taxon| %>
       <tr id="<%= dom_id(taxon, :sel) %>">
         <td><%= taxon.name %></td>
-        <td><%= @products_count[taxon.id]%></td>        
+        <td><%= @products_count[taxon.root]%></td>        
         <td>
         	<%= link_to icon('delete') + ' ' + t("delete"),
                             remove_taxon_admin_type_path(@type, taxon), :remote => true, :class => 'iconlink', :id => 'remove_taxon' %>

@@ -30,17 +30,17 @@ class Admin::TypesController < Admin::ResourceController
   end
   
   def edit
-  	@tax = @type.taxons
+  	@tax = @type.taxonomies
   	@products_count = Hash.new
   	@tax.each do |taxon|
-  	  @products_count[taxon.id] = Product.joins(:taxons).where('taxons.parent_id' => taxon.id).count
+  	  @products_count[taxon.root] = Product.joins(:taxons).where('taxons.parent_id' => taxon.root).count
     end
   end
 
   def add
-	  @taxon = Taxon.find(params[:taxon_id])
-    if @type.taxons << @taxon
-      render :locals => { :taxon => @taxon, :product_count => Product.joins(:taxons).where('taxons.parent_id' => @taxon.id).count }
+	  @taxonomy = Taxonomy.find(params[:taxonomy_id])
+    if @type.taxonomies << @taxonomy
+      render :locals => { :taxon => @taxonomy, :product_count => Product.joins(:taxons).where('taxons.parent_id' => @taxonomy.root).count }
     else
       flash[:error] = I18n.t("errors.add_taxon_to_type")
       render :update do |p|
@@ -54,9 +54,9 @@ class Admin::TypesController < Admin::ResourceController
   end
 
   def remove
-    @taxon = Taxon.find(params[:taxon_id])
-    if @type.taxons.delete(@taxon)
-      render :locals => { :taxon => @taxon }
+    @taxonomy = Taxonomy.find(params[:taxonomy_id])
+    if @type.taxonomies.delete(@taxonomy)
+      render :locals => { :taxon => @taxonomy }
     else
       flash[:error] = I18n.t("errors.remove_taxon_from_type")
       render :update do |p|
@@ -73,8 +73,8 @@ class Admin::TypesController < Admin::ResourceController
   end
   
   def available
-	@type = Type.find(params[:type])
-	@taxons = @type.taxons
-    @available_taxons ||= @taxons.empty? ? Taxon.top : Taxon.top.where("id not in (?)", @taxons.map(&:id)).all										  
+	  @type = Type.find(params[:type])
+	  @taxonomies = @type.taxonomies
+    @available_taxons ||= @taxonomies.empty? ? Taxonomy.all : Taxonomy.where("id not in (?)", @taxonomies.map(&:id)).all										  
   end
 end

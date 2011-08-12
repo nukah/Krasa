@@ -7,7 +7,7 @@ ProductsController.class_eval do
     @product_properties = ProductProperty.includes(:property).where(:product_id => @product.id)
 															.where('properties.visibility = ?', true)
     @selected_variant = @variants.detect { |v| v.available? }
-
+    
     referer = request.env['HTTP_REFERER']
 
     if referer && referer.match(HTTP_REFERER_REGEXP)
@@ -15,8 +15,5 @@ ProductsController.class_eval do
     end
 
     respond_with(@product)
-  end
-  def index
-    @products = Product.of_type(Type.where(:first => true))
   end
 end
