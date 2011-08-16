@@ -9,7 +9,14 @@ module ProductsHelper
   end
 
   def product_bestsellers(count, taxon = nil,start = 1.week.ago,finish = Time.now)
-    SQL = "select v.product_id,sum(li.quantity) sum from orders ord join line_items li on li.order_id = ord.id and ord.state == 'complete' join variants v on v.id = li.variant_id group by v.product_id;"
+    #SQL = "select v.product_id,sum(li.quantity) sum from orders ord join line_items li on li.order_id = ord.id and ord.state == 'complete' join variants v on v.id = li.variant_id group by v.product_id;"
     #TODO
+    objects = Order.between(start,finish).find(:all,
+                                               :joins => "line_items li ON li.order_id = orders.id AND orders.state == 'complete'", 
+                                               :joins => "variants v ON v.id = li.variant_id",
+                                               :select => "v.product_id, sum(li.quantity) sum",
+                                               :group => "v.product_id",
+                                               :limit => count)
+   #ORM Order.find(:all,:joins => "JOIN line_items li ON li.order_id = orders.id AND orders.state == 'complete'" + "JOIN variants v ON v.id = li.variant_id",:select => "v.product_id, sum(li.quantity) sum",:group => "v.product_id",:limit => 5)                                      
   end
 end
