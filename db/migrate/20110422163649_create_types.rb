@@ -2,7 +2,6 @@ class CreateTypes < ActiveRecord::Migration
   def self.up
     create_table :types do |t|
       t.string :name
-      t.string :presentation
       t.boolean :first, :default => false
       t.timestamps
     end

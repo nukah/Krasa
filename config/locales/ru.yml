@@ -4,6 +4,7 @@ ru:
  type: "Тип"
  editing_type: "Изменение типа"
  visibility: "Видимость"
+ type_first: "Категория для главной страницы"
  errors:
     delete_type: "Ошибка при удалении типа"
     add_taxon_to_type: "Ошибка при добавлении таксона к типу"
@@ -24,8 +25,3 @@ ru:
  name_or_sku: "Имя или артикул"
  manage_relation_types: "Управление связями товаров"
  no_relation_types: "Вам нужно настроить типы связей перед тем как использовать эту возможность"
-i18n:
- transliterate:
-  rule:
-   "ь": ""
-   "Ь": ""

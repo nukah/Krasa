@@ -1,0 +1,13 @@
+<% if product_bestsellers(@taxon.id).any? %>
+	<%= content_tag :div, :id => 'taxonomy_bestsellers' do -%>
+		<%= render :partial => 'shared/bestseller', :collection => product_bestsellers(@taxon.id) %>
+	<% end %>
+<% end %>
+
+<%= javascript_include_tag "autocolumn.min" %>
+
+<%= content_tag :div, :id => 'root_taxonomy_listing' do -%>
+	<%= render :partial => 'taxon', :collection => @taxon.children %>
+<% end -%>
+
+<%= javascript_tag "$('#root_taxonomy_listing').columnize();"%>

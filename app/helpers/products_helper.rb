@@ -8,15 +8,12 @@ module ProductsHelper
     options.delete(:format_as_currency) ? format_price(amount, options) : amount
   end
 
-  def product_bestsellers(count, taxon = nil,start = 1.week.ago,finish = Time.now)
-    #SQL = "select v.product_id,sum(li.quantity) sum from orders ord join line_items li on li.order_id = ord.id and ord.state == 'complete' join variants v on v.id = li.variant_id group by v.product_id;"
-    #TODO
+  def product_bestsellers(taxon = "not nil", count = 5, start = 1.week.ago, finish = Time.now)
     objects = Order.between(start,finish).find(:all,
-                                               :joins => "line_items li ON li.order_id = orders.id AND orders.state == 'complete'", 
-                                               :joins => "variants v ON v.id = li.variant_id",
+                                               :joins => "JOIN line_items li ON li.order_id = orders.id AND orders.state == 'complete' " + "JOIN variants v ON v.id = li.variant_id " + "JOIN products_taxons pt ON pt.product_id = v.product_id " + "JOIN taxons t ON t.id = pt.taxon_id and t.parent_id = #{taxon}",
                                                :select => "v.product_id, sum(li.quantity) sum",
                                                :group => "v.product_id",
                                                :limit => count)
-   #ORM Order.find(:all,:joins => "JOIN line_items li ON li.order_id = orders.id AND orders.state == 'complete'" + "JOIN variants v ON v.id = li.variant_id",:select => "v.product_id, sum(li.quantity) sum",:group => "v.product_id",:limit => 5)                                      
+    objects.map { |object| Product.find(object.product_id) }
   end
 end

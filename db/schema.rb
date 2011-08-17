@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110811164901) do
+ActiveRecord::Schema.define(:version => 20110817123335) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -538,11 +538,13 @@ ActiveRecord::Schema.define(:version => 20110811164901) do
 
   create_table "types", :force => true do |t|
     t.string   "name"
-    t.string   "presentation"
-    t.boolean  "first",        :default => false
+    t.boolean  "first",      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "permalink"
   end
+
+  add_index "types", ["permalink"], :name => "index_types_on_permalink"
 
   create_table "users", :force => true do |t|
     t.string   "email"

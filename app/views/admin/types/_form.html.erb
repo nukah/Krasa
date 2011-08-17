@@ -1,20 +1,20 @@
 <%= f.field_container :name do %>
-<%= f.error_messages %>
   <%= f.label :name, t("name") %><br />
   <%= f.text_field :name %>
   <%= f.error_message_on :name %>
 <% end %>
 
-<%= f.field_container :presentation do %>
-  <%= f.label :presentation, t("presentation") %><br />
-  <%= f.text_field :presentation %>
-  <%= f.error_message_on :presentation %>
+<%= f.field_container :permalink do %>
+	<%= f.error_messages %>
+	<%= f.label :permalink, t("permalink") %><br />
+	<%= f.text_field :permalink %>
+	<%= f.error_message_on :permalink %>
 <% end %>
 
 <%= f.field_container :first do %>
   <%= f.label :first, t("type_first") %><br />
   <%= f.check_box :first %>
   <%= f.error_message_on :first %>
-<% end%>
+<% end %>
 
 <h3><%= t("types") %></h3>
