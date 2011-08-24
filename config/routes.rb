@@ -10,5 +10,5 @@ Krasaonline::Application.routes.draw do
   	  end
   	end
   end
-  match '/type/:type' => 'types#show'
+  match '/type/:type' => 'types#show', :as => "set_type"
 end

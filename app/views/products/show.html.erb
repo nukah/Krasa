@@ -1,0 +1,21 @@
+<h1 class="page-title"><%= accurate_title %></h1>
+<! breadcumbs here !>
+<%= content_tag(:div, :class => "content clear-block") do -%>
+	<%= content_tag(:div, :class => "product_image") do -%>
+	  <div id="main-image">
+	    <%= render 'image' %>
+	  </div>
+	  <div id="product_thumbnails">
+	    <%= render 'thumbnails', :product => @product %>
+	  </div>
+	
+	<%= content_tag(:div, :class => "product_description") do %>
+	    <%= product_description(@product) rescue t("product_has_no_description") %>
+	    <%= render 'properties' %>
+	<% end -%>
+
+	  <div id="cart-form">
+	    <%= render 'cart_form' %>
+	  </div>
+	<% end %>
+<% end -%>
