@@ -93,7 +93,7 @@ vertical-align: top; font-family: Tahoma, Geneva, sans-serif;}
 #sidebarphone { color: #67949b; font-size: 14px; }
 #phone {color: #648a14; font-size: 18px; }
 
-#content { color: #007b89; font-size: 11px; font-family:"Bitstream Vera Sans Mono",Monaco,"Lucida Console"; text-decoration: underline;}
+#content { color: #007b89; font-size: 11px; font-family:"Bitstream Vera Sans Mono",Monaco,"Lucida Console";}
 #content a {color: #007b89; font-size: 11px; text-decoration: underline;}
 #content a hover {color: #97b0b4; font-size: 11px; text-decoration: underline;}
 #content select {color: #007b89; font-family:"Bitstream Vera Sans Mono",Monaco,"Lucida Console"; }
@@ -111,6 +111,9 @@ vertical-align: top; font-family: Tahoma, Geneva, sans-serif;}
 	}
 #dostavka img { 
 margin-left:160px;}
+#breadcrumbs { color: red; fong-weight: bold; }
+#breadcrumbs a { color: red; font-family: Verdana; font-weight:bold; font-size: 14px; text-decoration: none;}
+#breadcrumbs a:hover { color: green; font-family: Verdana; font-weight:bold; font-size: 14px; text-decoration: underline;}
 
 
 

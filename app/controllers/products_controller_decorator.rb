@@ -1,4 +1,4 @@
-ProductsController.class_eval do
+ProductsController.class_eval do  
   def show
     @product = Product.find_by_permalink!(params[:id])
     return unless @product

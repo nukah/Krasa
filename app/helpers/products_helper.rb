@@ -16,4 +16,17 @@ module ProductsHelper
                                                :limit => count)
     objects.map { |object| Product.find(object.product_id) }
   end
+  
+  def product_breadcrumbs(product, separator = "&nbsp;->&nbsp;")
+    crumbs = []
+    taxon = Taxon.of_product(product).first
+    top_taxon = 
+    
+    crumbs << content_tag(:span, link_to(t('home'), root_url), :id => 'root_link')
+    crumbs << taxon.ancestors.collect { |anc| content_tag(:span, link_to(anc.name, seo_url(anc)), :id => 'top_link') } unless taxon.ancestors.empty?
+    crumbs << content_tag(:span, link_to(taxon.name, seo_url(taxon)), :id => 'taxon_link')
+    crumbs << content_tag(:span, link_to(product.name, seo_url(product)), :id => 'product_link')
+    crumb_list = raw(crumbs.flatten.map{|li| li.mb_chars }.join(separator))
+    content_tag(:div, crumb_list + tag(:br, {:class => 'clear'}, false, true), :id => 'breadcrumbs')
+  end
 end
