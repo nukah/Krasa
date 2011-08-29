@@ -1,4 +1,11 @@
 ProductsController.class_eval do  
+  def index
+    @searcher = Spree::Search::Base.new(params)
+    @products = @searcher.retrieve_products
+
+    respond_with(@products)
+  end
+  
   def show
     @product = Product.find_by_permalink!(params[:id])
     return unless @product

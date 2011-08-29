@@ -1,9 +1,19 @@
-<%= form_tag products_url, :method => :get do %>
-	<%= label_tag 'search', t(:search) %>
-	<%= text_field_tag :keywords, params[:keywords], :id => 'search-query' %>
-	<%= submit_tag t(:search), :name => nil, :id => 'search-query-submit' %>
+<% @types = Type.all %>
+<%= form_tag products_url, :method => :get, :id => 'search' do %>
+  <%= content_tag(:span, t('search'), :id => 'search_form_label') %>
+  <%= text_field_tag :keywords, params[:keywords], :id => 'search_form_keywords' %> 
+  <%= select_tag :type, 
+        options_for_select([[t(:all_departments), '']] + @types.map {|t| [t.name, t.id]}), :id => 'search_form_type_options' %>
+  <%= submit_tag t(:search), :name => nil, :id => 'search_form_submit' %>
 <% end %>
-<%= content_tag :div, :id => 'search-example' do -%>
-	Тест
-<%= link_to 'example', '#' -%>
-<% end -%>
+<%= content_tag :div, :id => 'search_example' do %>
+Например, <%= link_to 'феромоны мужские', '', :id => 'search_example_link' %>
+<% end %>
+
+<%= javascript_tag do %>
+	$("#search_example_link").click(function() { 
+		$(this).animate({
+			opacity: 'toggle',
+		}, 150, function() { $(this).animate({opacity: 'toggle',}, 150); }); 
+	});
+<% end %>
