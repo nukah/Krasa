@@ -3,7 +3,7 @@ Spree::Search::Base.class_eval do
   
   def get_base_scope
     base_scope = @cached_product_group ? @cached_product_group.products.active : Product.active
-    base_scope = get_products_of_type(base_scope, type)
+    base_scope = get_appropriate_scope(base_scope)
     base_scope = get_products_conditions_for(base_scope, keywords) unless keywords.blank?
     
     base_scope = base_scope.on_hand unless Spree::Config[:show_zero_stock_products]
@@ -11,18 +11,19 @@ Spree::Search::Base.class_eval do
     base_scope
   end
   
-  def get_products_of_type(base_scope, type)
-    if type
-      base_scope.of_type(type)
-    elsif keywords
-      base_scope
+  def get_appropriate_scope(base_scope)
+    if search_type and !keywords.blank?
+      base_scope.of_type(search_type)
+    elsif choice_type
+      base_scope.of_type(choice_type)
     else
-      base_scope.of_type(active_type)
+      base_scope.of_type(default_type)
     end
   end
   
   def prepare(params)
-    @properties[:type] = params[:type].blank? ? nil : params[:type]
+    @properties[:search_type] = params[:search_type].blank? ? nil : params[:search_type]
+    @properties[:choice_type] = params[:type].blank? ? nil : Type.find_by_permalink(params[:type])
     @properties[:keywords] = params[:keywords]
 
     per_page = params[:per_page].to_i
