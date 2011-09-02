@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', "3.0.9"
-gem 'sqlite3', "1.3.3"
-gem 'spree', :git => 'git://github.com/spree/spree.git', :tag => "v0.60.1"
+gem 'rails' 
+gem 'sqlite3'
+gem 'spree' 
 
 gem 'spree_i18n', :git => 'git://github.com/spree/spree_i18n.git'
 gem 'spree_related_products', :git => 'git://github.com/spree/spree_related_products.git', :branch => '0.60.1'
@@ -16,6 +16,7 @@ end
 
 group :development do 
     gem 'active_reload'
+    gem 'pry-rails'
 end
 
 group :test do 

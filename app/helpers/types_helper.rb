@@ -4,17 +4,19 @@ module TypesHelper
   end
   
   def detect_type
-    if params[:controller] == 'products' and params[:action] == 'show'
-      type = Product.get_type(params[:id])
-    #elsif params[:controller] == 'products' and params[:action] == 'index'
-    #  1
-    elsif params[:controller] == 'taxons' and params[:action] == 'show'
-      type = Taxon.get_type(params[:taxon])
-    elsif params[:controller] == 'types' and params[:action] == 'show'
-      type = Type.find_by_permalink(params[:type])
+    @action = params[:action]
+    @controller = params[:controller]
+    
+    if @controller == 'products' and @action == 'show' and params[:id]
+      Product.get_type(params[:id])
+    elsif @controller == 'products' and @action == 'index'
+      (!params[:search_type].blank? and params[:search_type] != 'all') ? Type.find(params[:search_type]) : default_type
+    elsif @controller == 'taxons' and @action == 'show' and params[:taxon]
+      Taxon.get_type(params[:taxon])
+    elsif @controller == 'types' and @action == 'show' and params[:type]
+      Type.find_by_permalink(params[:type])
     else 
-      type = default_type
+      default_type
     end
-    type
   end
 end

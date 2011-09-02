@@ -23,7 +23,7 @@ Spree::Search::Base.class_eval do
   end
   
   def prepare(params)
-    @properties[:search_type] = params[:search_type].blank? ? nil : params[:search_type] == 'all' ? Type.select(:id).all : params[:search_type]
+    @properties[:search_type] = params[:search_type].blank? ? nil : params[:search_type] == 'all' ? Type.all : params[:search_type]
     @properties[:type] = params[:type].blank? ? nil : Type.find_by_permalink(params[:type]) or nil
     @properties[:taxon] = params[:taxon].blank? ? nil : Taxon.find(params[:taxon])
     @properties[:keywords] = params[:keywords]
