@@ -27,12 +27,6 @@ GIT
       factory_girl (~> 2.0.0)
       railties (>= 3.0.0)
 
-PATH
-  remote: redesign
-  specs:
-    redesign (0.60.1)
-      spree_core (>= 0.60.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -236,7 +230,6 @@ DEPENDENCIES
   jammit
   pry-rails
   rails
-  redesign!
   rspec
   rspec-rails
   spork (= 0.9.0.rc9)

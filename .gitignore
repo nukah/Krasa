@@ -7,3 +7,7 @@ vendor/
 db/sample/*
 public/assets/*
 app/config/initializers/pry_console.rb
+script/
+doc/
+
+

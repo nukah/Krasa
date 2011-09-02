@@ -6,9 +6,7 @@ gem 'spree'
 
 gem 'spree_i18n', :git => 'git://github.com/spree/spree_i18n.git'
 gem 'spree_related_products', :git => 'git://github.com/spree/spree_related_products.git', :branch => '0.60.1'
-# gem 'spree_social', :git => 'git://github.com/spree/spree_social.git'
 gem 'activemerchant'
-gem "redesign", :path => "redesign", :require => "redesign"
 
 group :production do
     gem 'jammit'
