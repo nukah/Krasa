@@ -1,4 +1,15 @@
 module ProductsHelper
+  def variant_price_diff(variant)
+    return product_price(variant) unless variant.product.master.price
+    diff = product_price(variant, :format_as_currency => false) - product_price(variant.product, :format_as_currency => false)
+    return nil if diff == 0
+    if diff > 0
+      "(#{t("add")}: #{format_price diff.abs})"
+    else
+      "(#{t("subtract")}: #{format_price diff.abs})"
+    end
+  end
+  
   def product_price(product_or_variant, options={})
     options.assert_valid_keys(:format_as_currency, :show_vat_text)
     options.reverse_merge! :format_as_currency => true, :show_vat_text => Spree::Config[:show_price_inc_vat]
@@ -28,5 +39,9 @@ module ProductsHelper
     crumbs << content_tag(:span, link_to(product.name, seo_url(product)), :id => 'product_link')
     crumb_list = raw(crumbs.flatten.map{|li| li.mb_chars }.join(separator))
     content_tag(:div, crumb_list + tag(:br, {:class => 'clear'}, false, true), :id => 'breadcrumbs')
+  end
+  
+  def product_description(product)
+    raw(product.description.gsub(/^(.*)$/, '<p>\1</p>'))
   end
 end

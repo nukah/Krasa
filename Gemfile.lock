@@ -15,16 +15,16 @@ GIT
 
 GIT
   remote: git://github.com/thoughtbot/factory_girl.git
-  revision: 63458eee46136b23b7e0b05c96dc27a75217efa2
+  revision: de2d49914c98bda23ece62b6dacdf90f0a9ca537
   specs:
-    factory_girl (2.0.5)
+    factory_girl (2.1.0)
 
 GIT
   remote: git://github.com/thoughtbot/factory_girl_rails.git
-  revision: a38b0dd62d229d9b9533170a7b056c9e02fd971c
+  revision: c7d54d2c31b49a27e7b303acee854a0788475aea
   specs:
-    factory_girl_rails (1.1.0)
-      factory_girl (~> 2.0.0)
+    factory_girl_rails (1.2.0)
+      factory_girl (~> 2.1.0)
       railties (>= 3.0.0)
 
 GEM

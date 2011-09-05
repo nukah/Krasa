@@ -5,6 +5,9 @@
   <%= javascript_include_tag :defaults %>	
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" %>
   <%= csrf_meta_tag %>
+  <%= hook :head do %>
+  	<%= yield :head %>
+  <% end %>
 </head>
 <body class="front">
 <table align="center" border="0" cellpadding="0" cellspacing="0" width="982" background="<%= image_path('layout/fon.png') %>" style="background-repeat: repeat-x; background-position:top;">
@@ -32,7 +35,7 @@
 		 					<%= yield :sidebar %>
 						<% end %>
 					</td>
-					<td width="54%" valign="top" align="center" id="content">
+					<td width="54%" valign="top" id="content">
 				 		<%= yield %>
 					</td>
 					<td width="22%" id="right-sidebar">

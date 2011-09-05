@@ -1,21 +1,24 @@
 <h1 class="page-title"><%= accurate_title %></h1>
 <%= product_breadcrumbs(@product) %>
-<%= content_tag(:div, :class => "content clear-block") do -%>
-	<%= content_tag(:div, :class => "product_image") do -%>
-	  <div id="main-image">
+<%= content_tag(:div, :class => 'product') do -%>
+	<%= content_tag(:div, :class => "main_image") do -%>
 	    <%= render 'image' %>
-	  </div>
-	  <div id="product_thumbnails">
+	<% end %>
+	
+	<%= content_tag(:div, :class => 'product_properties') do -%>
+		<%= render 'properties' %>
+	<% end %>
+
+	<%= content_tag(:div, :class => 'product_cart') do -%>
+		<%= render 'cart_form' %>
+	<% end %>	
+	
+	<%= content_tag(:div, :class => 'product_thumbnails') do -%>
 	    <%= render 'thumbnails', :product => @product %>
-	  </div>
+	<% end %>
+	
 	
 	<%= content_tag(:div, :class => "product_description") do %>
 	    <%= product_description(@product) rescue t("product_has_no_description") %>
-	    <%= render 'properties' %>
 	<% end -%>
-
-	  <div id="cart-form">
-	    <%= render 'cart_form' %>
-	  </div>
-	<% end %>
 <% end -%>
