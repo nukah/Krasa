@@ -10,7 +10,7 @@
   <% end %>
 </head>
 <body class="front">
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="982" background="<%= image_path('layout/fon.png') %>" style="background-repeat: repeat-x; background-position:top;">
+<table id="wrap" background="<%= image_path('layout/fon.png') %>">
 	<%= render :partial => 'shared/type_menu' %>
 	<tr id="logo">
 		<td height="60" colspan="3" class="search">
@@ -30,12 +30,18 @@
 		<td colspan="5">
 			<table border="0" width="100%">
 				<tr>
-					<td width="24%" id="left-sidebar" valign="top">
+					<% if content_for?(:sidebar)
+						 @body_layout = 'sidebar'
+						else
+						 @body_layout = 'no-sidebar' 
+						end
+					%>
+					<td id="left-sidebar" valign="top" class="<%= @body_layout %>">
 						<%= hook :sidebar do %>
 		 					<%= yield :sidebar %>
 						<% end %>
 					</td>
-					<td width="54%" valign="top" id="content">
+					<td id="center-block">
 				 		<%= yield %>
 					</td>
 					<td width="22%" id="right-sidebar">
@@ -47,25 +53,18 @@
 	</tr> 
 	<tr>
 		<td colspan="5">
-			<table width="100%" background="<%= image_path('layout/fonfooter.png') %>">
-				<tr>
-					<td width="29%" id="footer">© 2010
-						<span id="footer1">Krasa</span>
-						<span id="footer2">Online</span> — Духи с феромонами
-						<br />
-						<span id="footer-phone">(057) 762-81-01</span>
-						<br />
-						<span id="footer-phone">(066) 757-08-06</span>
-					</td>
-					<td colspan="3" id="footer" valign="top" align="right">
-						<br />
-						<span id="footer-right">Разработка сайта — Интернет-компания
-							<br />
-						</span>
-					</td>
-					<td width="14%" align="left"><%= image_tag('layout/logotype.png') %></td>
-				</tr>
-			</table>
+			<div id="footer-wrap">
+			<div id="footer">
+			            <div id="copyright">
+			                <div class="title">&copy; 2010 <span class="krasa">Krasa</span><span class="online">Online</span> &mdash; Духи с феромонами</div>
+			                <div class="phones">(057) 762-81-01<br>(066) 757-08-06</div>
+			            </div>
+			            <div id="developer">
+			                <div id="developer_title"><a target="_blank" href="http://www.s-label.com.ua">Разработка сайта</a> &mdash; интернет компания S-label</div>
+			                <!-- <div id="developer_logo"><a target="_blank" href="http://www.s-label.com.ua"><img alt="Интернет компания S-label" src="/sites/all/themes/krasa/img/s-label-logo.png"></a></div> -->
+			            </div>
+			        </div>
+			</div>
 		</td>
 	</tr>
 </table>

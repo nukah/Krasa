@@ -1,7 +1,64 @@
 @charset "utf-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 /* CSS Document */
 body {
 font-family: Georgia;
+color: #67949B;
+font-size: 12px;
+line-height: 15px;
+min-height: 100%;
+}
+a {
+    color: #007B89;
+    text-decoration: underline;
 }
 
 #search {
@@ -11,11 +68,58 @@ display: inline;
 font-size: 14px;
 }
 
-.feromon {
-color: #007b89;
-vertical-align: top;
+#wrap {
+	margin: 0 auto;
+    width: 980px;
+	background-repeat: no-repeat;
+	background-position: top;
 }
-
+#footer-wrap {
+	background: url("/images/layout/bg_footer.jpg") no-repeat scroll center bottom transparent;
+	height: 121px;
+}
+#footer {
+	height: 81px;
+    margin: 0 auto;
+    padding-top: 40px;
+    position: relative;
+    width: 980px;
+}
+#copyright {
+    left: 5px;
+    position: absolute;
+    top: 65px;
+}
+#copyright .title {
+    font-size: 12px;
+}
+#copyright .krasa {
+    color: #648A14;
+}
+#copyright .online {
+    color: #007B89;
+}
+#copyright .phones {
+    font-size: 11px;
+    padding: 2px 0 0 129px;
+}
+#developer {
+    bottom: 0;
+    height: 61px;
+    position: absolute;
+    right: 80px;
+    width: 290px;
+}
+#developer_title {
+    font-size: 11px;
+    padding-right: 40px;
+    padding-top: 5px;
+}
+#developer_logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
 .box {
 padding-top: 20px;
 }
@@ -238,6 +342,11 @@ float: left;
 padding-right: 10px;
 }
 
+.product-listing {
+list-style-type: none;
+align: left;
+}
+
 #product-properties {
 display: inline;
 list-style-type: none;
@@ -268,13 +377,53 @@ font-size: 14px;
 color: black;
 }
 
+#center-block {
+vertical-align: top;
+margin: 5px;
+}
+
+.sidebar {
+width: 25%;
+}
+
 .product {
 padding-top: 10px;
-display: block-inline;
 }
 .product > div {
 padding-bottom: 10px;
 }
 #product-variants ul {
 list-style-type: none;	
+}
+
+.product_item {
+width: 130px;
+height: 130px;
+float: left;
+margin-right: 30px;
+}
+.product_item .product-small-image {
+    border: 1px solid #A6D1D6;
+    height: 125px;
+    padding: 1px;
+    text-align: center;
+    width: 125px;
+}
+
+.product_item .product-title {
+	    color: #007B89;
+	    font-size: 12px;
+	    line-height: 14px;
+	    height: 45px;
+	    overflow: hidden;
+	    padding-top: 5px;
+}
+.product_item .product-price {
+    padding-bottom: 30px;
+    position: relative;
+}
+.product_item .product-price .price {
+    color: #BA38A2;
+    font-size: 14px;
+    font-weight: bold;
 }

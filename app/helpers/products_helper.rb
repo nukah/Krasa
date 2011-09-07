@@ -44,4 +44,13 @@ module ProductsHelper
   def product_description(product)
     raw(product.description.gsub(/^(.*)$/, '<p>\1</p>'))
   end
+  
+  def add_to_cart(product)
+      @variant_list = product.variants.reject { |v| (!v.in_stock && !Spree::Config[:show_zero_stock_products]) || v.option_values.empty? }
+      form_tag :populate_orders do
+          select_tag("variants", options_from_collection_for_select(@variant_list, "id", "options_text"))
+          hidden_field_tag("products", product.id)
+          image_submit_tag("layout/cart.png", :class => 'add_to_cart_button')
+      end
+  end
 end

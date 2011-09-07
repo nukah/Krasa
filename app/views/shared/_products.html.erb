@@ -1,0 +1,39 @@
+<%
+  paginated_products = @searcher.products if params.key?(:keywords)
+  paginated_products ||= products
+%>
+<% if products.empty? %>
+  <%= t(:no_products_found) %>
+<% elsif params.key?(:keywords) %>
+  <h3><%= t(:search_results, :keywords => h(params[:keywords])) %></h3>
+<% end %>
+ 
+<% if products.any? %>
+  <% products.each do |product| %>
+	<div id = "product_<%= product.id %>" class="product_item">
+    <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
+          <%= link_to small_image(product, :class => 'product-small-image'), product %>
+          <%= link_to raw(product.name), product, :class => 'product-title' %>
+		  <%= content_tag(:div, :class => 'product-price') do -%>
+		  	<span class="price"><%= product_price(product) -%></span>
+	 	  <% end %>
+	      <% if product.has_variants? %>
+			<% form_for :order, :url => populate_orders_url do |f| %>
+				<% @variants = product.variants.map { |v| [v.options_text, "#{v.id}, 1"] } %>
+				<%= select_tag("var", options_for_select(@variants)) %>
+				<%= image_submit_tag("layout/cart.png", :class => 'add_to_cart_button') %>
+			<% end %>
+		  <% end %>
+    <% end %>
+	</div>
+  <% end %>
+<% end %>
+  
+<% if paginated_products.respond_to?(:total_pages)
+      params.delete(:search)
+      params.delete(:taxon)
+      
+%><%= will_paginate(paginated_products,
+                    :previous_label => "&#171; #{t('previous')}",
+                    :next_label => "#{t('next')} &#187;") %>
+<% end %>
