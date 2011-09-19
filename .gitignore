@@ -5,7 +5,7 @@ tmp/
 .rvmrc
 vendor/
 db/sample/*
-public/assets/*
+public/*
 app/config/initializers/pry_console.rb
 script/
 doc/

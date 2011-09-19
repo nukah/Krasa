@@ -1,12 +1,19 @@
 source 'http://rubygems.org'
 
-gem 'rails' 
+gem 'rails', "3.1.0"
 gem 'sqlite3'
-gem 'spree' 
+gem 'spree', :git => 'git://github.com/spree/spree.git', :branch => 'master'
 
 gem 'spree_i18n', :git => 'git://github.com/spree/spree_i18n.git'
-gem 'spree_related_products', :git => 'git://github.com/spree/spree_related_products.git', :branch => '0.60.1'
+gem 'spree_related_products', :git => 'git://github.com/spree/spree_related_products.git'
+gem 'spree_recently_viewed', :git => 'git://github.com/spree/spree_recently_viewed.git'
 gem 'activemerchant'
+
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier' 
+end
 
 group :production do
     gem 'jammit'

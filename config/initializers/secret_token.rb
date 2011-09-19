@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Krasaonline::Application.config.secret_token = '9cfde583664b2b7c8ea98ed5ed4ad0d9147d8091c4aeb2a02086acfea7929a69560c29161919d470527513b60414b07ed91e8dd971b33411ded7e4a914fbaab7'
+Krasaonline::Application.config.secret_token = '13fec5d4033015c9a9b4e8648c57418689c5fad71b227fd2db800e816a00600c37849dd882f4ddab1a3a04a1d28973c63d50d6ef6470e77d8a75b750ea8ccbcf'

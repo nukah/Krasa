@@ -7,6 +7,8 @@ class TypesController < Spree::BaseController
     end
     @searcher = Spree::Search::Base.new(params)
     @products = @searcher.retrieve_products
+    
+    puts @products
 
     respond_with(@products)
   end

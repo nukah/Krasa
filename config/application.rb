@@ -2,11 +2,17 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+if defined?(Bundler)
+  # If you precompile assets before deploying to production, use this line
+  Bundler.require *Rails.groups(:assets => %w(development test))
+  # If you want your assets lazily compiled in production, use this line
+  # Bundler.require(:default, :assets, Rails.env)
+end
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Krasaonline
   class Application < Rails::Application
-	  require 'spree_site'
+    require 'spree_site'
 	  config.middleware.use "RedirectLegacyProductUrl"
 	  config.middleware.use "SeoAssist"
     config.autoload_paths += %W(#{config.root}/lib)
@@ -29,5 +35,7 @@ module Krasaonline
 	  config.stylesheets = "screen,additional"
     config.encoding = "utf-8"
     config.filter_parameters += [:password]
+    config.assets.enabled = true
+    config.assets.version = '1.0'
   end
 end
