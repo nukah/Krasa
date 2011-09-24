@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', "3.1.0"
+gem 'rails' #, "3.1.0"
 gem 'sqlite3'
 gem 'spree', :git => 'git://github.com/spree/spree.git', :branch => 'master'
 
@@ -21,7 +21,9 @@ end
 
 group :development do 
     gem 'active_reload'
+    gem 'unicorn'
     gem 'pry-rails'
+    gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
 group :test do 

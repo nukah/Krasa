@@ -1,10 +1,14 @@
 <%= form_for :order, :url => populate_orders_url do |f| %>
-  <% if product_price(@product) %>
+  <% if product_price(@product) && @product.variants.empty? %>
       <p class="prices">
         <%= t("price") %>
         <span class="price selling"><%= product_price(@product) %></span>
       </p>
   <% end %>
+ 
+  <p class="stock">
+	<%= t("stock") %>: <%= @product.has_stock? ? t('in_stock') : t('out_of_stock') %>
+  </p>
 
   <% if @product.has_variants? %>
     <div id="product-variants">
@@ -30,13 +34,8 @@
   <% end %>
   <% if @product.has_stock? || Spree::Config[:allow_backorders] %>
     <%= text_field_tag (@product.has_variants? ? :quantity : "variants[#{@product.master.id}]"),
-      1, :class => "title", :size => 3 %>
-    &nbsp;
-    <button type='submit' class='large primary'>
-      <%= image_tag('/images/add-to-cart.png') + t('add_to_cart') %>
-    </button>
-  <% else %>
-    <%= content_tag('strong', t('out_of_stock')) %>
+      1, :class => "product_quantity", :size => 3 %>
+	<input type='image', src="<%= image_path('layout/cart.png') %>">
   <% end %>
 <% end %>
 

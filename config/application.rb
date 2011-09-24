@@ -13,6 +13,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 module Krasaonline
   class Application < Rails::Application
     require 'spree_site'
+#    config.middleware.use ::Rack::PerftoolsProfiler, :default_printer => 'text', :bundler => true
 	  config.middleware.use "RedirectLegacyProductUrl"
 	  config.middleware.use "SeoAssist"
     config.autoload_paths += %W(#{config.root}/lib)

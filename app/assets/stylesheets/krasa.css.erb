@@ -17,35 +17,35 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+display: block;
 }
 body {
-	line-height: 1;
+line-height: 1;
 }
 ol, ul {
-	list-style: none;
+list-style: none;
 }
 blockquote, q {
-	quotes: none;
+quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+content: '';
+content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+border-collapse: collapse;
+border-spacing: 0;
 }
 
 /* CSS Document */
@@ -57,8 +57,8 @@ line-height: 15px;
 min-height: 100%;
 }
 a {
-    color: #007B89;
-    text-decoration: underline;
+color: #007B89;
+text-decoration: underline;
 }
 
 #search {
@@ -69,56 +69,56 @@ font-size: 14px;
 }
 
 #wrap {
-	margin: 0 auto;
-    width: 980px;
-	background-repeat: no-repeat;
-	background-position: top;
+margin: 0 auto;
+width: 980px;
+background-repeat: no-repeat;
+background-position: top;
 }
 #footer-wrap {
-	background: url(<%= asset_path "layout/bg_footer.jpg" %>) no-repeat scroll center bottom transparent;
-	height: 121px;
+background: url(<%= asset_path "layout/bg_footer.jpg" %>) no-repeat scroll center bottom transparent;
+height: 121px;
 }
 #footer {
-	height: 81px;
-    margin: 0 auto;
-    padding-top: 40px;
-    position: relative;
-    width: 980px;
+height: 81px;
+margin: 0 auto;
+padding-top: 40px;
+position: relative;
+width: 980px;
 }
 #copyright {
-    left: 5px;
-    position: absolute;
-    top: 65px;
+left: 5px;
+position: absolute;
+top: 65px;
 }
 #copyright .title {
-    font-size: 12px;
+font-size: 12px;
 }
 #copyright .krasa {
-    color: #648A14;
+color: #648A14;
 }
 #copyright .online {
-    color: #007B89;
+color: #007B89;
 }
 #copyright .phones {
-    font-size: 11px;
-    padding: 2px 0 0 129px;
+font-size: 11px;
+padding: 2px 0 0 129px;
 }
 #developer {
-    bottom: 0;
-    height: 61px;
-    position: absolute;
-    right: 80px;
-    width: 290px;
+bottom: 0;
+height: 61px;
+position: absolute;
+right: 80px;
+width: 290px;
 }
 #developer_title {
-    font-size: 11px;
-    padding-right: 40px;
-    padding-top: 5px;
+font-size: 11px;
+padding-right: 40px;
+padding-top: 5px;
 }
 #developer_logo {
-    position: absolute;
-    right: 0;
-    top: 0;
+position: absolute;
+right: 0;
+top: 0;
 }
 .box {
 padding-top: 20px;
@@ -359,12 +359,14 @@ width: 25%;
 
 .product {
 padding-top: 10px;
+font-size: 14px;
+display: block;
 }
 .product > div {
 padding-bottom: 10px;
 }
 #product-variants ul {
-list-style-type: none;	
+list-style-type: none;
 }
 
 .product_item {
@@ -374,27 +376,38 @@ float: left;
 margin-right: 30px;
 }
 .product_item .product-small-image {
-    border: 1px solid #A6D1D6;
-    height: 125px;
-    padding: 1px;
-    text-align: center;
-    width: 125px;
+border: 1px solid #A6D1D6;
+height: 125px;
+padding: 1px;
+text-align: center;
+width: 125px;
 }
 
 .product_item .product-title {
-	    color: #007B89;
-	    font-size: 12px;
-	    line-height: 14px;
-	    height: 45px;
-	    overflow: hidden;
-	    padding-top: 5px;
+color: #007B89;
+font-size: 12px;
+line-height: 14px;
+height: 45px;
+overflow: hidden;
+padding-top: 5px;
 }
 .product_item .product-price {
-    padding-bottom: 30px;
-    position: relative;
+padding-bottom: 30px;
+position: relative;
 }
 .product_item .product-price .price {
-    color: #BA38A2;
-    font-size: 14px;
-    font-weight: bold;
+color: #BA38A2;
+font-size: 14px;
+font-weight: bold;
+}
+.product_title {
+font-weight: bold;
+color: #648A14;
+line-height: 30px;
+font-size: 24px;
+margin-bottom: 15px;
+}
+.product_quantity {
+display: inline;
+padding-top: 5px;
 }

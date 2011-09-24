@@ -9,5 +9,6 @@ Krasaonline::Application.configure do
   
   config.assets.compress = false
   config.assets.debug = false
+  config.log_level = :debug
 end
 

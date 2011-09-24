@@ -1,6 +1,6 @@
-<h1 class="page-title"><%= accurate_title %></h1>
 <%= product_breadcrumbs(@product) %>
 <%= content_tag(:div, :class => 'product') do -%>
+	<%= content_tag(:span, accurate_title, :class => 'product_title') %>
 	<%= content_tag(:div, :class => "main_image") do -%>
 	    <%= render 'image' %>
 	<% end %>

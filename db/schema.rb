@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110829141300) do
+ActiveRecord::Schema.define(:version => 20110924120831) do
+
+  create_table "activators", :force => true do |t|
+    t.string   "description"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "starts_at"
+    t.string   "name"
+    t.string   "event_name"
+    t.string   "type"
+  end
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -43,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20110829141300) do
     t.boolean  "locked"
     t.integer  "originator_id"
     t.string   "originator_type"
+    t.boolean  "eligible",        :default => true
   end
 
   add_index "adjustments", ["order_id"], :name => "index_adjustments_on_order_id"
@@ -328,8 +341,20 @@ ActiveRecord::Schema.define(:version => 20110829141300) do
   add_index "products_taxons", ["product_id"], :name => "index_products_taxons_on_product_id"
   add_index "products_taxons", ["taxon_id"], :name => "index_products_taxons_on_taxon_id"
 
+  create_table "promotion_action_line_items", :force => true do |t|
+    t.integer "promotion_action_id"
+    t.integer "variant_id"
+    t.integer "quantity",            :default => 1
+  end
+
+  create_table "promotion_actions", :force => true do |t|
+    t.integer "activator_id"
+    t.integer "position"
+    t.string  "type"
+  end
+
   create_table "promotion_rules", :force => true do |t|
-    t.integer  "promotion_id"
+    t.integer  "activator_id"
     t.integer  "user_id"
     t.integer  "product_group_id"
     t.datetime "created_at"
@@ -347,19 +372,6 @@ ActiveRecord::Schema.define(:version => 20110829141300) do
 
   add_index "promotion_rules_users", ["promotion_rule_id"], :name => "index_promotion_rules_users_on_promotion_rule_id"
   add_index "promotion_rules_users", ["user_id"], :name => "index_promotion_rules_users_on_user_id"
-
-  create_table "promotions", :force => true do |t|
-    t.string   "code"
-    t.string   "description"
-    t.integer  "usage_limit"
-    t.boolean  "combine"
-    t.datetime "expires_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "starts_at"
-    t.string   "match_policy", :default => "all"
-    t.string   "name"
-  end
 
   create_table "properties", :force => true do |t|
     t.string   "name"
