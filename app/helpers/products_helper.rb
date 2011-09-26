@@ -53,4 +53,11 @@ module ProductsHelper
           image_submit_tag("layout/cart.png", :class => 'add_to_cart_button')
       end
   end
+  def variants_headers(product)
+    list = Array.new
+    product.variants.active.each do |v|
+      list.push(v.option_types)
+    end
+    list.flatten.uniq
+  end
 end

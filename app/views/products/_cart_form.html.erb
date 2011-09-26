@@ -11,6 +11,10 @@
   </p>
 
   <% if @product.has_variants? %>
+  <%= content_tag(:table, :class => 'product_variants_table') do %>
+
+  <% end %>
+
     <div id="product-variants">
       <h2><%= t('variants') %></h2>
       <ul>
