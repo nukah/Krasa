@@ -7,40 +7,28 @@
   <% end %>
  
   <p class="stock">
-	<%= t("stock") %>: <%= @product.has_stock? ? t('in_stock') : t('out_of_stock') %>
+	<span><%= t("stock") %>:</span> <%= @product.has_stock? ? t('in_stock') : t('out_of_stock') %>
   </p>
 
-  <% if @product.has_variants? %>
-  <%= content_tag(:table, :class => 'product_variants_table') do %>
-
-  <% end %>
-
-    <div id="product-variants">
-      <h2><%= t('variants') %></h2>
-      <ul>
-        <%  has_checked = false
-        @product.variants.active.each_with_index do |v,index|
-          next if v.option_values.empty? || (!v.in_stock && !Spree::Config[:show_zero_stock_products])
-          checked = !has_checked && (v.in_stock || Spree::Config[:allow_backorders])
-          has_checked = true if checked %>
-          <li>
-            <label>
-              <%= radio_button_tag "products[#{@product.id}]", v.id, checked, :disabled => !v.in_stock && !Spree::Config[:allow_backorders] %>
-              <span class="variant-description">
-                <%= variant_options v %>
-              </span>
-              <span class="price diff">( <%= product_price v %> )</span>
-            </label>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <% if @product.has_stock? || Spree::Config[:allow_backorders] %>
-    <%= text_field_tag (@product.has_variants? ? :quantity : "variants[#{@product.master.id}]"),
-      1, :class => "product_quantity", :size => 3 %>
-	<input type='image', src="<%= image_path('layout/cart.png') %>">
-  <% end %>
+  <div class="product_variants">
+	<%= content_tag(:h2, t('variants') )%>
+	<% if @product.has_variants? %>
+		<div class="variants_wrapper">
+		<%= content_tag(:table, :class => 'variants_table') do %>
+			<%= draw_variants_headers(@product) %>
+			<% @product.variants.active.each_with_index do |v,index| %>
+				<% next if v.option_values.empty? || (!v.in_stock && !Spree::Config[:show_zero_stock_products]) %>
+				<%= content_tag(:tr, :class => 'variant_row') do %>
+					<%= content_tag(:td, v.option_values.first.presentation, :class => 'option_value') %>
+					<%= content_tag(:td, product_price(v), :class => 'variant_price') %>
+					<%= content_tag(:td, radio_button_tag("products[#{@product.id}]", v.id, :disabled => !v.in_stock && !Spree::Config[:allow_backorders]), :class => 'variant_choice_radio') %>
+				<% end %>
+			<% end %>
+			<tr><td colspan="3" class="add_to_cart_row"><%= image_submit_tag('layout/cart.png')%></td></tr>
+		<% end %>
+		</div>
+	<% end %>
+  </div>
 <% end %>
 
 <% content_for :head do %>

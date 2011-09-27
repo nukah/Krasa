@@ -31,7 +31,6 @@ module ProductsHelper
   def product_breadcrumbs(product, separator = "&nbsp;->&nbsp;")
     crumbs = []
     taxon = Taxon.of_product(product).first
-    top_taxon = 
     
     crumbs << content_tag(:span, link_to(t('home'), root_url), :id => 'root_link')
     crumbs << taxon.ancestors.collect { |anc| content_tag(:span, link_to(anc.name, seo_url(anc)), :id => 'top_link') } unless taxon.ancestors.empty?
@@ -53,11 +52,12 @@ module ProductsHelper
           image_submit_tag("layout/cart.png", :class => 'add_to_cart_button')
       end
   end
-  def variants_headers(product)
-    list = Array.new
-    product.variants.active.each do |v|
-      list.push(v.option_types)
-    end
-    list.flatten.uniq
+  
+  def draw_variants_headers(product)
+    tag = []
+    tag << product.option_types.collect { |ot| content_tag(:th, ot.presentation, :class => 'variant_table_header') }
+    tag << content_tag(:th, t('price'), :class => 'variant_table_header')
+    tag << content_tag(:th, t('choice'), :class => 'variant_table_header')
+    content_tag(:tr, raw(tag.flatten!.join()))
   end
 end

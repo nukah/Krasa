@@ -1,5 +1,4 @@
 Variant.class_eval do
-  def option_types
-    self.option_values.map { |ov| ov.option_type.presentation }
+  def belongs_to_option(option)
   end
 end

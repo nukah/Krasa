@@ -28,3 +28,4 @@ ru:
  stock: "Наличие"
  in_stock: "в наличии"
  out_of_stock: "отсутствует"
+ choice: 'Выбор'
