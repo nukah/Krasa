@@ -28,4 +28,79 @@ ru:
  stock: "Наличие"
  in_stock: "в наличии"
  out_of_stock: "отсутствует"
- choice: 'Выбор'
+ choice: 'Выбор' 
+ activemodel:
+    attributes:
+        promotion:
+            name: Название
+            description: Описание
+            code: Код
+            usage_limit: Лимит использований
+            starts_at: Начинается 
+            expires_at: Заканчивается
+ add_action_of_type: Добавить действие вида
+ add_rule_of_type: Добавить правило вида
+ advertise: Рекламировать
+ coupon: Купон
+ coupon_code: Код купона
+ editing_promotion: Редактирование промо
+ expiry: Истекает
+ free_shipping: Бесплатная доставка
+ new_promotion: Новое промо
+ no_rules_added: Правила отсутствуют
+ promotion: Промо
+ promotion_actions: Действия
+ promotions: Промо-акции
+ promotion_form:
+    match_policies:
+        all: Соответствие всем правилам
+        any: Соответствие любым из правил
+ promotions_description: Управление предложениями и купонами промо
+ promotion_action_types:
+    create_adjustment:
+        name: Создать скидку
+        description: Изменение цены подходящего продукта
+    create_line_items:
+        name: Создать линейку продуктов
+        description: Добавляет следующие продукты в корзину
+    give_store_credit:
+        name: Добавление внутренней валюты
+        description: Добавляет определённое количество внутренней валюты на счёт пользователя
+ promotion_rule_types:
+    user:
+        name: Пользователь
+        description: Доступно только для определённых пользователей
+    product:
+        name: Продукт(ы)
+        description: Заказ включает определённые продукты
+    item_total:
+        name: Товаров в корзине
+        description: Заказ содержит указанное количество товаров
+    first_order:
+        name: Первый зака
+        description: Первый заказ у покупателя
+    landing_page:
+        name: Landing Page
+        description: Пользователь посетил стартовую промо-страницу
+    user_logged_in:
+        name: Пользователь авторизовался
+        description: Доступно только для авторизованных покупателей
+ product_rule:
+    choose_products: Выберите продукты
+    label: Заказ должен содержать %{select} соответствующих товаров
+    match_any: хотя бы один
+    match_all: все
+    product_source:
+        group: Продуктовой группы
+        manual: Выбранные
+ rules: Rules
+ user_rule:
+    choose_users: Choose users
+ item_total_rule:
+    operators:
+        gt: больше чем
+        gte: больше или равен
+ landing_page_rule:
+    path: Путь
+ promotion_action: Действие промо-акции
+ promotion_rule: Правило промо-акции

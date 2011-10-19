@@ -1,4 +1,3 @@
-<%= form_for :order, :url => populate_orders_url do |f| %>
   <% if product_price(@product) && @product.variants.empty? %>
       <p class="prices">
         <%= t("price") %>
@@ -14,8 +13,10 @@
 	<%= content_tag(:h2, t('variants') )%>
 	<% if @product.has_variants? %>
 		<div class="variants_wrapper">
+		<%= form_for :order, :url => populate_orders_url do |f| %>
 		<%= content_tag(:table, :class => 'variants_table') do %>
 			<%= draw_variants_headers(@product) %>
+			<%= hidden_field_tag('quantity', '1') %>
 			<% @product.variants.active.each_with_index do |v,index| %>
 				<% next if v.option_values.empty? || (!v.in_stock && !Spree::Config[:show_zero_stock_products]) %>
 				<%= content_tag(:tr, :class => 'variant_row') do %>
@@ -26,10 +27,10 @@
 			<% end %>
 			<tr><td colspan="3" class="add_to_cart_row"><%= image_submit_tag('layout/cart.png')%></td></tr>
 		<% end %>
+		<% end %>
 		</div>
 	<% end %>
   </div>
-<% end %>
 
 <% content_for :head do %>
   <%= javascript_include_tag 'product' %>

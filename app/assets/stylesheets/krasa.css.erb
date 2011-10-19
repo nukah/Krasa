@@ -74,8 +74,9 @@ width: 980px;
 background-repeat: no-repeat;
 background-position: top;
 }
+
 #footer-wrap {
-background: url(/assets/layout/bg_footer-044ca06b35b3d724013f9703a94c5137.jpg) no-repeat scroll center bottom transparent;
+background: url(<%= asset_path('layout/bg_footer.jpg') %>) no-repeat scroll center bottom transparent;
 height: 121px;
 }
 #footer {
@@ -138,7 +139,7 @@ text-decoration: underline;
 #search_form_keywords {
 width: 400px;
 height: 24px;
-background: url( /assets/layout/search-3cd026cfb3fce32ff788ba99f2df882e.png) no-repeat;
+background: url(<%= asset_path('layout/search.png') %>) no-repeat;
 border: none;
 padding: 0 0 0 5px;
 }
@@ -166,31 +167,21 @@ align: left;
 #product-properties {
 display: inline;
 list-style-type: none;
-font-size: 14px;
-font-family: Georgia;
 }
-#product-properties .option {
-color: olive;
-}
+
 #product-properties .value {
 color: black;
 }
-
-.product_thumbnails {
-display: block;
-}
-
 .product_description {
-font-family: Georgia;
 font-size: 13px;
 text-indent: 1em;
 white-space: normal;
 position: relative;
 }
 .product_description p:first-letter {
-font-weight: bold;
 font-size: 14px;
-color: black;
+color: gray;
+text-decoration: underline;
 }
 
 #center-block {
@@ -204,15 +195,38 @@ width: 25%;
 
 .product {
 padding-top: 10px;
+position: relative;
+clear: both;
+width: 100%;
+display: inline-block;
 font-size: 14px;
+margin: 0;
+}
+.product span {
+color: olive;
+}
+.images {
+position: absolute;
 display: block;
+width: 240px;
+min-width: 150px;
+max-width: 240px;
 }
-.product > div {
-padding-bottom: 10px;
+.info {
+position: absolute;
+display: block;
+right: 10px;
+width: 600px;
+min-width: 200px;
 }
+.product_thumbnails {
+margin-top: 15px;
+}
+
 .main_image {
-display: inline;
+display: block;
 float: left;
+width: 100%;
 padding-right: 10px;
 margin: 5px;
 }
@@ -224,7 +238,7 @@ display: inline;
 }
 .product_variants {
 margin-top: 5px;
-padding: 5px 2px 5px 5px;
+padding: 5px 2px 5px 0px;
 display: block;
 }
 .product_variants h2 {
@@ -308,4 +322,27 @@ margin-bottom: 15px;
 .product_quantity {
 display: inline;
 padding-top: 5px;
+}
+
+.navigation dt {
+background: url(<%= asset_path('layout/icon_duxi.png') %>) no-repeat scroll 0 0 transparent;
+line-height: 23px;
+}
+dl.navigation dt a {
+color: #648A14;
+font-size: 1.2em;
+line-height: 1.5;
+font-weight: bold;
+padding-left: 20px;
+}
+dl.navigation dd a {
+padding-left: 40px;
+font-size: 13px;
+line-height: 1.2;
+}
+dl.navigation a.current {
+font-weight: bold;
+font-size: 115%;
+line-height: 20px;
+color:	#7133C7;
 }

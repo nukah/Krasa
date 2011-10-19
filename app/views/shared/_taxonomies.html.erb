@@ -1,20 +1,18 @@
-<div id="taxonomies" class="sidebar-item">
+<div>
   <% get_current_menu.each do |taxonomy| %>
-    <ul class="navigation-list">
-      <li<%== ' class="current"' if @taxon && @taxon == taxonomy.root %>>
-        <%= link_to t("shop_by_taxonomy", :taxonomy => taxonomy.name.singularize), seo_url(taxonomy.root),
-                                          :class => 'root' %>
-      </li>
-
-      <% taxonomy.root.children.each do |taxon| %>
-        <li<%== ' class="current"' if @taxon and ([@taxon] + @taxon.ancestors).include?(taxon) %>>
-          <%= link_to taxon.name, seo_url(taxon) %>
-        </li>
-			<% taxon.children.each do |subcategory| -%>
-				<%= link_to subcategory.name, seo_url(subcategory), :id => 'menu-subcategory-link' %>
-			<% end -%>
-	    <% end %>
-
-	  </ul>
+	<dl class="navigation">
+		<dt>
+        	<%= link_to t("shop_by_taxonomy", :taxonomy => taxonomy.name.singularize), seo_url(taxonomy.root) %>
+		</dt>
+      	<% taxonomy.root.children.each do |taxon| %>
+         <dd>
+		 	<% if @taxon and ([@taxon] + @taxon.ancestors).include?(taxon) %>
+         		<%= link_to taxon.name, seo_url(taxon), :class => 'current' %>
+			<% else %>
+				<%= link_to taxon.name, seo_url(taxon) %>
+			<% end %>
+		 </dd>
+        <% end %>
+      </dl>
   <% end %>
 </div>

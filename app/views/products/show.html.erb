@@ -1,24 +1,23 @@
 <%= product_breadcrumbs(@product) %>
 <%= content_tag(:div, :class => 'product') do -%>
 	<%= content_tag(:span, accurate_title, :class => 'product_title') %>
-	<%= content_tag(:div, :class => "main_image") do -%>
+	<%= content_tag(:div, :class => "images") do -%>
 	    <%= render 'image' %>
+		<%= content_tag(:div, :class => 'product_thumbnails') do -%>
+		    <%= render 'thumbnails', :product => @product %>
+		<% end %>
 	<% end %>
-	
-	<%= content_tag(:div, :class => 'product_properties') do -%>
-		<%= render 'properties' %>
-	<% end %>
+	<%= content_tag(:div, :class => 'info') do -%>
+		<%= content_tag(:div, :class => 'product_properties') do -%>
+			<%= render 'properties' %>
+		<% end %>
 
-	<%= content_tag(:div, :class => 'product_cart') do -%>
-		<%= render 'cart_form' %>
-	<% end %>	
+		<%= content_tag(:div, :class => 'product_cart') do -%>
+			<%= render 'cart_form' %>
+		<% end %>	
 	
-	<%= content_tag(:div, :class => 'product_thumbnails') do -%>
-	    <%= render 'thumbnails', :product => @product %>
-	<% end %>
-	
-	
-	<%= content_tag(:div, :class => "product_description") do %>
-	    <%= product_description(@product) rescue t("product_has_no_description") %>
+		<%= content_tag(:div, :class => "product_description") do %>
+		    <%= product_description(@product) rescue t("product_has_no_description") %>
+		<% end -%>
 	<% end -%>
 <% end -%>
