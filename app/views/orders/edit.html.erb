@@ -1,0 +1,42 @@
+<h1><%= t(:shopping_cart) %></h1>
+
+<% if @order.line_items.empty? %>
+
+  <div id='cart_empty'>
+    <p><%= t(:your_cart_is_empty) %></p>
+	<img src="<%= asset_path('layout/empty_cart.png') %>">
+    <p><%= link_to t(:continue_shopping), products_path, :class => 'button continue' %></p>
+  </div>
+
+<% else %>
+  <div data-hook="outside_cart_form">
+    <%= form_for @order, :url => update_cart_path, :html => {:id => 'update-cart'} do |order_form| %>
+      <div data-hook="inside_cart_form">
+
+        <div>
+          <%= render :partial => 'form', :locals => {:order_form => order_form} %>
+        </div>
+
+        <div id="subtotal" data-hook>
+          <h3><%= "#{t(:subtotal)}: #{order_price(@order)}" %></h3>
+          <div class="links" data-hook="cart_buttons">
+            <%= button_tag :class => 'large primary', :id => 'update-button' do %>
+              <%= image_tag('icons/update.png') + t(:update) %>
+            <% end %>
+            <%= link_to image_tag('icons/checkout.png') + t(:checkout), checkout_path, :class => 'button checkout primary', :id => 'checkout-link' %>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+  <div id="empty-cart" data-hook>
+  <%= form_tag empty_cart_path, :method => :put do %>
+    <p id="clear_cart_link" data-hook>
+      <%= submit_tag t(:empty_cart), :class => 'button' %>
+      <%= t(:or) %>
+      <%= link_to t(:continue_shopping), products_path, :class => 'continue' %>
+    </p>
+  <% end %>
+  </div>
+<% end %>

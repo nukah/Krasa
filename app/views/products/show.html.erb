@@ -1,6 +1,6 @@
 <%= product_breadcrumbs(@product) %>
 <%= content_tag(:div, :class => 'product') do -%>
-	<%= content_tag(:span, accurate_title, :class => 'product_title') %>
+	<%= content_tag(:h1, accurate_title) %>
 	<%= content_tag(:div, :class => "images") do -%>
 	    <%= render 'image' %>
 		<%= content_tag(:div, :class => 'product_thumbnails') do -%>

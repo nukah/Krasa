@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails'
+gem 'rails', "3.1.1"
 gem 'sqlite3'
-gem 'spree', :git => 'git://github.com/spree/spree.git', :tag => 'v0.70.0.rc2'
+gem 'spree', :git => 'git://github.com/spree/spree.git', :branch => '0-70-stable'
 
 gem 'spree_i18n', :git => 'git://github.com/spree/spree_i18n.git'
 gem 'spree_related_products', :git => 'git://github.com/spree/spree_related_products.git'
@@ -20,7 +20,8 @@ group :production do
 end
 
 group :development do 
-    gem 'active_reload'
+#    gem 'active_reload'
+    gem 'rails-dev-boost'
     gem 'unicorn'
     gem 'pry-rails'
     gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'

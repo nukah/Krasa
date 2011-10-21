@@ -1,4 +1,7 @@
 ru:
+ date:
+    formats:
+        default: "%d/%m/%Y"
  new_type: "Новый тип"   
  types: "Типы"
  type: "Тип"

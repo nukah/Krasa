@@ -6,31 +6,34 @@
   <% end %>
  
   <p class="stock">
-	<span><%= t("stock") %>:</span> <%= @product.has_stock? ? t('in_stock') : t('out_of_stock') %>
+	<span><%= t("stock") %>:</span> <strong><%= @product.has_stock? ? t('in_stock') : t('out_of_stock') %></strong>
   </p>
 
-  <div class="product_variants">
-	<%= content_tag(:h2, t('variants') )%>
+<div id='product_variants'>
+	<%= content_tag :span, t('variants') %>
 	<% if @product.has_variants? %>
-		<div class="variants_wrapper">
-		<%= form_for :order, :url => populate_orders_url do |f| %>
-		<%= content_tag(:table, :class => 'variants_table') do %>
-			<%= draw_variants_headers(@product) %>
-			<%= hidden_field_tag('quantity', '1') %>
-			<% @product.variants.active.each_with_index do |v,index| %>
+			<% @product.variants.active.each_with_index do |v,i| %>
 				<% next if v.option_values.empty? || (!v.in_stock && !Spree::Config[:show_zero_stock_products]) %>
-				<%= content_tag(:tr, :class => 'variant_row') do %>
-					<%= content_tag(:td, v.option_values.first.presentation, :class => 'option_value') %>
-					<%= content_tag(:td, product_price(v), :class => 'variant_price') %>
-					<%= content_tag(:td, radio_button_tag("products[#{@product.id}]", v.id, :disabled => !v.in_stock && !Spree::Config[:allow_backorders]), :class => 'variant_choice_radio') %>
+				<%= form_for :order, :url => populate_orders_url do %>
+				<div id='product_variant'>
+					<p id='product_options'><%= v.options_text %></p>
+					<p id='product_price'><%= t('price') %>: <strong><%= product_price(v) %></strong></p>
+					<p id='product_stock'><%= t('stock')%>: <strong id='<%= v.in_stock ? 'in_stock' : 'out_of_stock' %>'><%= v.in_stock ? t('in_stock') : t('out_of_stock') %></strong></p>
+					<%= image_submit_tag('layout/add_to_bag.png', :disabled => !v.in_stock && !Spree::Config[:allow_backorders], :id => 'product_add') %>
+					<%= hidden_field_tag("products[#{@product.id}]", v.id) %>
+					<%= hidden_field_tag("quantity", 1) %>
+				</div>
 				<% end %>
 			<% end %>
-			<tr><td colspan="3" class="add_to_cart_row"><%= image_submit_tag('layout/cart.png')%></td></tr>
+	<% else %>
+		<%= form_for :order, :url => populate_orders_url do %>
+			<%= image_submit_tag('layout/add_to_bag.png', :disabled => !v.in_stock && !Spree::Config[:allow_backorders], :id => 'product_add') %>
+			<%= hidden_field_tag("products[#{@product.id}]", v.id) %>
+			<%= hidden_field_tag("quantity", 1) %>
 		<% end %>
-		<% end %>
-		</div>
 	<% end %>
-  </div>
+</div>
+
 
 <% content_for :head do %>
   <%= javascript_include_tag 'product' %>
