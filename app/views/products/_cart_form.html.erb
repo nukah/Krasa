@@ -6,33 +6,34 @@
   <% end %>
  
   <p class="stock">
-	<span><%= t("stock") %>:</span> <strong><%= @product.has_stock? ? t('in_stock') : t('out_of_stock') %></strong>
+	<span><%= t("stock") %>:</span> <strong><%= @product.has_stock? ? image_tag('layout/in_stock.png',:alt => t('in_stock'),  :class => 'stock_status') : image_tag('layout/out_of_stock.png', :alt => t('out_of_stock'), :class => 'stock_status') %></strong>
   </p>
 
-<div id='product_variants'>
+<% if @product.has_variants? %>
+	<div id='product_variants'>
 	<%= content_tag :span, t('variants') %>
-	<% if @product.has_variants? %>
-			<% @product.variants.active.each_with_index do |v,i| %>
-				<% next if v.option_values.empty? || (!v.in_stock && !Spree::Config[:show_zero_stock_products]) %>
-				<%= form_for :order, :url => populate_orders_url do %>
-				<div id='product_variant'>
-					<p id='product_options'><%= v.options_text %></p>
-					<p id='product_price'><%= t('price') %>: <strong><%= product_price(v) %></strong></p>
-					<p id='product_stock'><%= t('stock')%>: <strong id='<%= v.in_stock ? 'in_stock' : 'out_of_stock' %>'><%= v.in_stock ? t('in_stock') : t('out_of_stock') %></strong></p>
-					<%= image_submit_tag('layout/add_to_bag.png', :disabled => !v.in_stock && !Spree::Config[:allow_backorders], :id => 'product_add') %>
-					<%= hidden_field_tag("products[#{@product.id}]", v.id) %>
-					<%= hidden_field_tag("quantity", 1) %>
-				</div>
-				<% end %>
-			<% end %>
-	<% else %>
+	<% @product.variants.active.each_with_index do |v,i| %>
+		<% next if v.option_values.empty? || (!v.in_stock && !Spree::Config[:show_zero_stock_products]) %>
 		<%= form_for :order, :url => populate_orders_url do %>
-			<%= image_submit_tag('layout/add_to_bag.png', :disabled => !v.in_stock && !Spree::Config[:allow_backorders], :id => 'product_add') %>
-			<%= hidden_field_tag("products[#{@product.id}]", v.id) %>
-			<%= hidden_field_tag("quantity", 1) %>
+			<div id='product_variant'>
+				<p id='product_options'><%= v.options_text %></p>
+				<p id='product_price'><%= t('price') %>: <strong><%= product_price(v) %></strong></p>
+				<p id='product_stock'><%= t('stock')%>: <strong id='<%= v.in_stock ? 'in_stock' : 'out_of_stock' %>'><%= v.in_stock ? t('in_stock') : t('out_of_stock') %></strong></p>
+				<%= image_submit_tag('layout/shopping_cart.png', :disabled => !v.in_stock && !Spree::Config[:allow_backorders], :id => 'product_add') %>
+				<%= hidden_field_tag("products[#{@product.id}]", v.id) %>
+				<%= hidden_field_tag("quantity", 1) %>
+			</div>
+			<% end %>
 		<% end %>
+		</div>
+<% else %>
+	<div id='product_variants'>
+	<%= form_for :order, :url => populate_orders_url do %>
+		<%= image_submit_tag('layout/shopping_cart.png', :disabled => !@product.on_hand && !Spree::Config[:allow_backorders], :id => 'product_add') %>
+		<%= hidden_field_tag("variants[#{@product.master.id}]", 1) %>
 	<% end %>
-</div>
+	</div>
+<% end %>
 
 
 <% content_for :head do %>

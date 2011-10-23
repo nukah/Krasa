@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', "3.1.1"
 gem 'sqlite3'
-gem 'spree', :git => 'git://github.com/spree/spree.git', :branch => '0-70-stable'
+gem 'spree', :git => 'git://github.com/spree/spree.git', :tag => 'v0.70.1'
 
 gem 'spree_i18n', :git => 'git://github.com/spree/spree_i18n.git'
 gem 'spree_related_products', :git => 'git://github.com/spree/spree_related_products.git'
