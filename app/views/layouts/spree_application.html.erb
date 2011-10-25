@@ -5,11 +5,11 @@
   <%= javascript_include_tag :application %>	
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" %>
   <%= csrf_meta_tag %>
-  <%= hook :head do %>
+  <% if content_for?(:head) %>
   	<%= yield :head %>
   <% end %>
 </head>
-<body class="front">
+<body>
 <table id="wrap" background="<%= asset_path 'layout/fon.png' %>">
 	<%= render :partial => 'shared/type_menu' %>
 	<tr>
@@ -37,7 +37,7 @@
 						end
 					%>
 					<td id="left-sidebar" valign="top" class="<%= @body_layout %>">
-						<%= hook :sidebar do %>
+						<% if content_for(:sidebar) %>
 		 					<%= yield :sidebar %>
 						<% end %>
 					</td>

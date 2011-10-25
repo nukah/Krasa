@@ -1,0 +1,45 @@
+#address_wrapper {
+	text-align: center;
+	display: block;
+	clear: both;
+	text-align: left;
+	margin-top: 25px;
+}
+#address_wrapper #billing {
+	width: 300px;
+	float: left;
+	padding-left: 100px;
+}
+#address_wrapper #shipping {
+	left: 150px;
+}
+#shipping p.field {
+	text-align: left;
+}
+
+fieldset > legend {
+	font-weight: bold;
+	font-size: 15px;
+	color: #789930;
+	line-height: 15px;
+}
+.field { 
+	padding-bottom: 5px;
+}
+.field label {
+	padding-bottom: 2px;
+	font-weight: bold;
+}
+.req { 
+	color: red;
+	font-weight: bold;
+}
+fieldset p > label:after {
+	content: ': ';
+}
+.space {
+	clear: both;
+}
+.form-buttons {
+	display: block;
+}

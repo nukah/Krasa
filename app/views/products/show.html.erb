@@ -7,17 +7,17 @@
 		    <%= render 'thumbnails', :product => @product %>
 		<% end %>
 	<% end %>
-	<%= content_tag(:div, :class => 'info') do -%>
+	<%= content_tag(:div, :class => 'common_information') do -%>
 		<%= content_tag(:div, :class => 'product_properties') do -%>
 			<%= render 'properties' %>
+		<% end %>
+		
+		<%= content_tag(:div, :class => 'product_information') do -%>
+			<%= render 'information' %>
 		<% end %>
 
 		<%= content_tag(:div, :class => 'product_cart') do -%>
 			<%= render 'cart_form' %>
 		<% end %>	
-	
-		<%= content_tag(:div, :class => "product_description") do %>
-		    <%= product_description(@product) rescue t("product_has_no_description") %>
-		<% end -%>
 	<% end -%>
 <% end -%>

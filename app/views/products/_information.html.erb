@@ -1,0 +1,11 @@
+<% if product_price(@product) && @product.has_variants? %>
+	<%= content_tag(:p, :class => 'price selling') do %>
+		<span class="option"><%= t("price") -%></span>
+		<span class="value"><%= product_price(@product) %></span>
+	<% end %>
+<% end %>
+
+<%= content_tag(:p, :class => 'stock') do -%>
+	<span class="option"><%= t("stock") %>:</span> 
+		<%= @product.has_stock? ? image_tag('layout/in_stock.png',:alt => t('in_stock'),  :class => 'stock_status') : image_tag('layout/out_of_stock.png', :alt => t('out_of_stock'), :class => 'stock_status') %>
+<% end %>

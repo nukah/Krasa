@@ -8,6 +8,7 @@ gem 'spree_i18n', :git => 'git://github.com/spree/spree_i18n.git'
 gem 'spree_related_products', :git => 'git://github.com/spree/spree_related_products.git'
 gem 'spree_recently_viewed', :git => 'git://github.com/spree/spree_recently_viewed.git'
 gem 'activemerchant'
+gem 'locale_detector'
 
 group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
@@ -20,11 +21,8 @@ group :production do
 end
 
 group :development do 
-#    gem 'active_reload'
     gem 'rails-dev-boost'
-    gem 'unicorn'
     gem 'pry-rails'
-    gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 end
 
 group :test do 
@@ -33,5 +31,5 @@ group :test do
     gem 'rspec'
     gem 'rspec-rails'
     gem 'faker'
-    gem 'spork', '0.9.0.rc9'
+    gem 'spork' #, '0.9.0.rc9'
 end
