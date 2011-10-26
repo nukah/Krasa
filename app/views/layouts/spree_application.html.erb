@@ -9,64 +9,53 @@
   	<%= yield :head %>
   <% end %>
 </head>
-<body>
-<table id="wrap" background="<%= asset_path 'layout/fon.png' %>">
-	<%= render :partial => 'shared/type_menu' %>
-	<tr>
-		<td height="60" colspan="3" class="search">
+<body class="wrap">
+	<div class="container_12">
+		<div class="grid_12">
+			<%= render :partial => 'shared/type_menu' %>
+		</div>
+		<div class="clear"></div>
+		<div class="grid_9">
 			<%= render :partial => 'shared/search' %>
-		</td>
-		<td colspan="2" id="dostavka">
-			<table width="390" height="51">
-	  			<tr>
-					<td width="205" height="47" align="right" valign="bottom" style="padding-right: 15px;"><%= image_tag('layout/box.png') %></td>
-					<td width="173" style="padding-bottom: 5px; text-decoration: underline; color: #007b89; padding-left: 3px; font-family:'Bitstream Vera Sans Mono',Monaco,Lucida Console'";  align="left" valign="bottom"><strong>Оплата и доставка</strong>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="5">
-			<table border="0" width="100%">
-				<tr>
-					<% if content_for?(:sidebar)
-						 @body_layout = 'sidebar'
-						else
-						 @body_layout = 'no-sidebar' 
-						end
-					%>
-					<td id="left-sidebar" valign="top" class="<%= @body_layout %>">
-						<% if content_for(:sidebar) %>
-		 					<%= yield :sidebar %>
-						<% end %>
-					</td>
-					<td id="center-block">
-				 		<%= yield %>
-					</td>
-					<td width="22%" id="right-sidebar">
-						<%= render :partial => "shared/rightbar" %>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr> 
-	<tr>
-		<td colspan="5">
-			<div id="footer-wrap">
-			<div id="footer">
-			            <div id="copyright">
-			                <div class="title">&copy; 2010 <span class="krasa">Krasa</span><span class="online">Online</span> &mdash; Духи с феромонами</div>
-			                <div class="phones">(057) 762-81-01<br>(066) 757-08-06</div>
-			            </div>
-			            <div id="developer">
-			                <div id="developer_title"><a target="_blank" href="http://www.s-label.com.ua">Разработка сайта</a> &mdash; интернет компания S-label</div>
-			                <!-- <div id="developer_logo"><a target="_blank" href="http://www.s-label.com.ua"><img alt="Интернет компания S-label" src="/sites/all/themes/krasa/img/s-label-logo.png"></a></div> -->
-			            </div>
-			        </div>
+		</div>
+		<div class="grid_3">
+			<%= image_tag('layout/box.png') %>
+			<strong>Оплата и доставка</strong>
+		</div>
+		<div class="clear"></div>
+		<% if content_for?(:sidebar) %>
+			<div class="grid_3">
+				<%= yield :sidebar %>
 			</div>
-		</td>
-	</tr>
-</table>
+			<div class="grid_6">
+				<%= yield %>
+			</div>
+			<div class="grid_3">
+				<%= render :partial => "shared/rightbar" %>
+			</div>
+		<% else %>
+			<div class="grid_9">
+				<%= yield %>
+			</div>
+			<div class="grid_3">
+				<%= render :partial => "shared/rightbar" %>
+			</div>
+		<% end %>
+		<div class="clear"></div>
+	</div>
+	<div class="footer-wrap">
+		<div class="container_12">
+			<div class="grid_12">
+				<div id="copyright">
+					<div class="title">&copy; 2010 <span class="krasa">Krasa</span><span class="online">Online</span> &mdash; Духи с феромонами</div>
+				    <div class="phones">(057) 762-81-01<br>(066) 757-08-06</div>
+				</div>
+				<div id="developer">
+					<div id="developer_title"><a target="_blank" href="http://www.s-label.com.ua">Разработка сайта</a> &mdash; интернет компания S-label</div>
+				 <!-- <div id="developer_logo"><a target="_blank" href="http://www.s-label.com.ua"><img alt="Интернет компания S-label" src="/sites/all/themes/krasa/img/s-label-logo.png"></a></div> -->
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

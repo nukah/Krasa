@@ -52,12 +52,4 @@ module ProductsHelper
           image_submit_tag("layout/cart.png", :class => 'add_to_cart_button')
       end
   end
-  
-  def draw_variants_headers(product)
-    tag = []
-    tag << product.option_types.collect { |ot| content_tag(:th, ot.presentation, :class => 'variant_table_header') }
-    tag << content_tag(:th, t('price'), :class => 'variant_table_header')
-    tag << content_tag(:th, t('choice'), :class => 'variant_table_header')
-    content_tag(:tr, raw(tag.flatten!.join()))
-  end
 end

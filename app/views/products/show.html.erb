@@ -1,23 +1,21 @@
 <%= product_breadcrumbs(@product) %>
-<%= content_tag(:div, :class => 'product') do -%>
-	<%= content_tag(:h1, accurate_title) %>
-	<%= content_tag(:div, :class => "images") do -%>
-	    <%= render 'image' %>
-		<%= content_tag(:div, :class => 'product_thumbnails') do -%>
-		    <%= render 'thumbnails', :product => @product %>
-		<% end %>
+<span><%= content_tag(:h1, accurate_title) %></span>
+<%= content_tag(:div, :class => "images grid_2") do -%>
+    <%= render 'image' %>
+	<%= content_tag(:div, :class => 'product_thumbnails') do -%>
+	    <%= render 'thumbnails', :product => @product %>
 	<% end %>
-	<%= content_tag(:div, :class => 'common_information') do -%>
-		<%= content_tag(:div, :class => 'product_properties') do -%>
-			<%= render 'properties' %>
-		<% end %>
-		
-		<%= content_tag(:div, :class => 'product_information') do -%>
-			<%= render 'information' %>
-		<% end %>
+<% end %>
+<%= content_tag(:div, :class => 'common_information grid_6') do -%>
+	<%= content_tag(:div, :class => 'product_properties') do -%>
+		<%= render 'properties' %>
+	<% end %>
+	
+	<%= content_tag(:div, :class => 'product_information') do -%>
+		<%= render 'information' %>
+	<% end %>
 
-		<%= content_tag(:div, :class => 'product_cart') do -%>
-			<%= render 'cart_form' %>
-		<% end %>	
-	<% end -%>
+	<%= content_tag(:div, :class => 'product_cart') do -%>
+		<%= render 'cart_form' %>
+	<% end %>	
 <% end -%>
