@@ -1,13 +1,6 @@
-<tr>
-	<td><%= link_to image_tag('layout/logo.png'), root_url %></td>
-	<td width   = "193"><%= link_to image_tag('layout/duxi.png'), set_type_url('main') %></td>
-	<td width   = "193"><%= link_to image_tag('layout/kosmetika.png'), set_type_url('cosmetika') %></td>
-	<td width   = "191"><%= link_to image_tag('layout/parfum.png'), set_type_url('fieromony') %></td>
-</tr>
-
-<tr>
-	<td></td>
-	<td align="center" class="header"><span>Духи с феромонами</span></td>
-	<td align="center" class="header"><span>Косметика</span></td>
-	<td align="center" class="header"><span>Парфюмерия</span></td>
-</tr>
+<div class="grid_4 logo"><%= link_to image_tag('layout/logo.png'), root_url %></div>
+<div class="grid_7 types">
+	<div class="type"><%= link_to image_tag('layout/duxi.png'), set_type_url('main') %><span>Духи с феромонами</span></div>
+	<div class="type"><%= link_to image_tag('layout/kosmetika.png'), set_type_url('cosmetika') %><span>Косметика</span></div>
+	<div class="type"><%= link_to image_tag('layout/parfum.png'), set_type_url('fieromony') %><span>Парфюмерия</span></div>
+</div>

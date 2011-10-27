@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: git://github.com/thoughtbot/factory_girl.git
-  revision: e3bf491dd6af2b6c5c110c4a795db65bb458e3da
+  revision: 93026a8f2f456602c76d0c0ed78b4292ddc8b7a9
   specs:
     factory_girl (2.2.0)
       activesupport

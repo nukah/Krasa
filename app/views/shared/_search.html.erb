@@ -1,10 +1,10 @@
 <% @types = Type.all %>
 <%= form_tag products_url, :method => :get, :id => 'search' do %>
   <%= content_tag(:span, t('search'), :id => 'search_form_label') %>
-  <%= text_field_tag :keywords, params[:keywords], :id => 'search_form_keywords' %> 
+  <%= content_tag(:div, text_field_tag(:keywords, params[:keywords]), :class => "search_form_keywords") %> 
   <%= select_tag :search_type, 
         options_for_select([[t(:all_departments), 'all']] + @types.map {|t| [t.name, t.id]}), :id => 'search_form_type_options' %>
-  <%= submit_tag t(:search), :name => nil, :id => 'search_form_submit' %>
+  <%= submit_tag '',:name => nil, :id => 'search_form_submit' %>
 <% end %>
 <%= content_tag :div, :id => 'search_example' do %>
 Например, <%= link_to 'феромоны мужские', '', :id => 'search_example_link' %>
