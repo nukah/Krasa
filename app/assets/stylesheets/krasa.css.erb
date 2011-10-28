@@ -10,7 +10,7 @@ a {
 	color: #007B89;
 	text-decoration: underline;
 }
-a.cupid-green {
+.cupid-green {
 	background-color: #7fbf4d;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#7fbf4d), to(#63a62f));
 	/* Saf4+, Chrome */
@@ -41,7 +41,7 @@ a.cupid-green {
 	width: 150px;
 	height: 20px;
 }
-a.cupid-green:hover {
+.cupid-green:hover {
 	background-color: #76b347;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#76b347), to(#5e9e2e));
 	/* Saf4+, Chrome */
@@ -57,7 +57,7 @@ a.cupid-green:hover {
 	box-shadow: inset 0 1px 0 0 #8dbf67;
 	cursor: pointer;
 }
-a.cupid-green:active {
+.cupid-green:active {
 	border: 1px solid #5b992b;
 	border-bottom: 1px solid #538c27;
 	-webkit-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
@@ -114,8 +114,66 @@ a.cupid-green:active {
 	-o-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
 	box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
 }
-
-
+.cupid-blue {
+	background-color: #d7e5f5;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#d7e5f5), to(#cbe0f5));
+	/* Saf4+, Chrome */
+ 	background-image: -webkit-linear-gradient(top, #d7e5f5, #cbe0f5);
+  	background-image: -moz-linear-gradient(top, #d7e5f5, #cbe0f5);
+  	background-image: -ms-linear-gradient(top, #d7e5f5, #cbe0f5);
+  	background-image: -o-linear-gradient(top, #d7e5f5, #cbe0f5);
+  	background-image: linear-gradient(top, #d7e5f5, #cbe0f5);
+  	border-top: 1px solid #abbbcc;
+  	border-left: 1px solid #a7b6c7;
+  	border-bottom: 1px solid #a1afbf;
+  	border-right: 1px solid #a7b6c7;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0 1px 0 0 # white;
+	-moz-box-shadow: inset 0 1px 0 0 # white;
+	-ms-box-shadow: inset 0 1px 0 0 # white;
+	-o-box-shadow: inset 0 1px 0 0 # white;
+	box-shadow: inset 0 1px 0 0 # white;
+	color: black;
+	font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	line-height: 1;
+	text-decoration: none;
+	padding: 7px 10px 8px 10px;
+	text-align: center;
+	text-shadow: 0 -1px 0 white;
+	width: 150px;
+	height: 20px;
+}
+.cupid-blue:hover {
+	background-color: #ccd9e8;
+    background-image: -webkit-linear-gradient(top, #ccd9e8, #c1d4e8);
+    background-image: -moz-linear-gradient(top, #ccd9e8, #c1d4e8);
+    background-image: -ms-linear-gradient(top, #ccd9e8, #c1d4e8);
+    background-image: -o-linear-gradient(top, #ccd9e8, #c1d4e8);
+    background-image: linear-gradient(top, #ccd9e8, #c1d4e8);
+    border-top: 1px solid #a1afbf;
+    border-left: 1px solid #9caaba;
+    border-bottom: 1px solid #96a3b3;
+    border-right: 1px solid #9caaba;
+    -webkit-box-shadow: inset 0 1px 0 0 #f2f2f2;
+    -moz-box-shadow: inset 0 1px 0 0 #f2f2f2;
+    -ms-box-shadow: inset 0 1px 0 0 #f2f2f2;
+    -o-box-shadow: inset 0 1px 0 0 #f2f2f2;
+    box-shadow: inset 0 1px 0 0 #f2f2f2;
+    color: #444444;
+    cursor: pointer; 
+}
+button.cupid-blue:active {
+   	border: 1px solid #8c98a7;
+   	-webkit-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eeeeee;
+   	-moz-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eeeeee;
+   	-ms-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eeeeee;
+   	-o-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eeeeee;
+   	box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eeeeee; 
+}
 /* Overall Layout */
 #search {
 	color: #648a14;
@@ -131,25 +189,27 @@ a.cupid-green:active {
 	vertical-align: bottom;
 	background: url(<%= asset_path('layout/bg_footer.jpg') %>) no-repeat scroll center bottom;
 }
+.types {
+	float: right;
+}
 .type {
-	width: 154px;
+	width: 190px;
 	display: inline;
 	float: left;
 	text-align: center;
-	margin-right: 15px;
-	margin-bottom: 10px;
+	margin-right: 8px;
+}
+.type img {
+	padding-bottom: 8px;
 }
 .type span {
 	text-align: center;
 	font-size: 120%;
-	padding-top: 5px;
 	display: inline;
 }
-.type span:hover {
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	border-radius: 20px;
-	border:1px solid #5EA4FF;
+.type span.hover {
+	font-weight: bold;
+	border-bottom: 1px dashed green;
 }
 .logo {
 	padding-top: 10px;
@@ -247,7 +307,7 @@ a.cupid-green:active {
 	display: inline;
 	position: relative;
 	left: 10px;
-	padding: 1px 0 0 0;
+	padding: 5px 0 0 0px;
 	background: url("<%= asset_path('layout/search_button.png') %>") no-repeat scroll 0 0 transparent;
     border: medium none;
     cursor: pointer;
@@ -525,7 +585,7 @@ strong#out_of_stock {
 	font-size: 13px;
 	width: 90%;
 }
-#cart_headers {
+.cart_headers th {
 	color: black;
 	font-weight: bold;
 	height: 20px;

@@ -31,5 +31,5 @@ group :test do
     gem 'rspec'
     gem 'rspec-rails'
     gem 'faker'
-    gem 'spork' #, '0.9.0.rc9'
+    gem 'spork', '0.9.0.rc9'
 end

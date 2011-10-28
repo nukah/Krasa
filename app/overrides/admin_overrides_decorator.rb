@@ -13,8 +13,3 @@ Deface::Override.new(:virtual_path => "admin/products/_form",
                      :replace => 'code[erb-loud]:contains("f.text_field :available_on, :class => \'datepicker\'")',
                      :text => "<%= f.text_field :available_on, :class => 'datepicker', :value => Time.now %>"
                     )
-Deface::Override.new(:virtual_path => "products/index",
-                      :name => "search_results_override",
-                      :replace => 'code[erb-loud]:contains("t(:no_products_found)")',
-                      :text => '<span id="search_results_not_found"><%= t(:no_products_found) %></span>'
-                      )

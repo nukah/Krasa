@@ -32,6 +32,8 @@
     <% end %>
   </div>
 	<div id="post_cart_form">
+		<%= link_to t(:continue_shopping), products_path, :class => 'cupid-blue'%>
+		<%= t(:or) %>
 		<%= link_to t(:checkout), checkout_path, :class => 'cupid-green', :id => 'checkout-link' %>
 	</div>
 <% end %>
