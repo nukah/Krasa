@@ -1,0 +1,13 @@
+<div class="guest_checkout">
+ 	<%= render 'shared/error_messages', :target => @order %>
+  	<h2><%= t(:guest_user_account) %></h2>
+   	<%= form_for @order, :url => update_checkout_registration_path, :html => { :method => :put, :id => 'checkout_form_registration'} do |f| %>
+    	<ul>
+			<li>
+				<%= content_tag(:span, t(:email)) %><br>
+       			<%= f.text_field :email %>
+			</li>
+		</ul>
+		<%= f.submit t(:continue), :class => 'btn primary' %>
+  	<% end %>
+</div>

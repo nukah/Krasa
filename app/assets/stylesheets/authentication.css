@@ -1,0 +1,20 @@
+.password-credentials {
+	text-align: left;
+}
+ul li span {
+	font-weight: bold;
+	font-size: 105%;
+}
+.remember-me {
+	display: block;
+	height: 40px;
+}
+.remember-me label {
+	text-align: center;
+}
+#remember-me-label {
+	paddin-bottom: 8px;
+}
+.guest_checkout ul {
+	padding-bottom: 10px;
+}

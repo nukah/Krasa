@@ -1,3 +1,5 @@
+/* ...
+*/
 #address_wrapper {
 	text-align: center;
 	display: block;
@@ -42,4 +44,25 @@ fieldset p > label:after {
 }
 .form-buttons {
 	display: block;
+}
+.auth_block {
+	margin-top: 25px;
+	margin-left: 15%;
+	width: 80%;
+	display: inline-block;
+}
+.auth_dialog {
+	min-width: 150px;
+	max-width: 400px;
+	/* right block */
+}
+.guest_checkout {
+	display: block;
+	float: left;
+	/* left block | if nonexistent - auth_Dialog should take place */ 
+}
+.auth_links {
+	margin-top: 25px;
+	display: block;
+	height: 20px;
 }

@@ -1,0 +1,38 @@
+<% content_for(:head) { stylesheet_link_tag('authentication') }%>
+<h2><%= t(:registered_user_account) %></h2>
+<%= form_for :user, :url => user_session_path do |f| %>
+  <div class="password-credentials">
+	<ul>
+		<li>
+	  		<%= content_tag(:span, t(:email)) %><br>
+      		<%= f.text_field :email %>
+		</li>
+		<li>
+	  		<%= content_tag(:span, t(:password)) %><br>
+      		<%= f.password_field :password %>
+		</li>
+	</ul>
+  </div>
+<div class="remember-me">
+    <label>
+      <%= f.check_box :remember_me, :id => 'remember-me-checkbox' %>
+      <%= content_tag :span, t('remember_me'), :id => 'remember-me-label' %>
+	  <%= f.submit t(:log_in), :class => 'btn primary' %>
+    </label>
+<%= javascript_tag do %>
+$(document).ready(function() {
+	$('#remember-me-label').bind('click', function() {
+		var b = $('#remember-me-checkbox');
+		if(b.attr('checked')) {
+			b.removeAttr('checked');
+		} else {
+			b.attr('checked', true);
+		}
+	});
+});
+<% end %>
+</div>
+  <div class="auth_links">
+	<%= link_to t(:create_a_new_account), signup_path %> | <%= link_to t(:forgot_password), new_user_password_path %>
+  </div>
+<% end %>

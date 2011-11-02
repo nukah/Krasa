@@ -1,0 +1,16 @@
+<% content_for(:head) do %>
+	<%= stylesheet_link_tag('checkout') %>
+<% end %>
+
+<div class="auth_block">
+	<% if flash[:alert] %>
+		<div class="flash errors"><%= flash[:alert] %></div>
+	<% end %>
+	
+	<% if Spree::Config[:allow_guest_checkout] %>
+		<%= render :partial => 'shared/guest_checkout' %>
+ 	<% end %>
+	<div class="auth_dialog">
+		<%= render :partial => 'shared/authentication' %>
+	</div>
+</div>
