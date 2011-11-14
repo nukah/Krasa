@@ -7,10 +7,9 @@ Krasaonline::Application.configure do
   config.active_support.deprecation = :log
   config.action_dispatch.best_standards_support = :builtin
   
-  config.assets.js_compressor  = :uglifier
   config.assets.css_compressor = :scss
   config.assets.compress = false
-  config.assets.debug = false
+  config.assets.debug = true
   config.log_level = :debug
 end
 

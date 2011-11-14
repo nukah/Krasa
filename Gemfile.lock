@@ -50,7 +50,8 @@ GIT
 
 GIT
   remote: git://github.com/spree/spree_recently_viewed.git
-  revision: c94e4caa7a738c6f626cbb7f595474749c24cc75
+  revision: 1156bdb9b4b2872bd625aa38507451d2e5b22bde
+  ref: 1156bdb9b4b2
   specs:
     spree_recently_viewed (1.1)
       spree_core (>= 0.40.0)
@@ -64,14 +65,14 @@ GIT
 
 GIT
   remote: git://github.com/thoughtbot/factory_girl.git
-  revision: 68e8e9ea6f93d45729bd4ee720f6dc1c78245739
+  revision: 6bf74f034a56bf495d75fd667db618d6ec662e25
   specs:
     factory_girl (2.2.0)
       activesupport
 
 GIT
   remote: git://github.com/thoughtbot/factory_girl_rails.git
-  revision: bf6acea862605d587ad7c0c302b6536a585be194
+  revision: 9cee2e5baa68d38600ba931fb137ca2a3680f7d7
   specs:
     factory_girl_rails (1.3.0)
       factory_girl (~> 2.2.0)
@@ -120,7 +121,7 @@ GEM
     acts_as_list (0.1.4)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
-    braintree (2.12.0)
+    braintree (2.13.0)
       builder (>= 2.0.0)
     builder (3.0.0)
     cancan (1.6.5)
@@ -132,7 +133,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.1.2)
+    coffee-script-source (1.1.3)
     deface (0.7.1)
       nokogiri (~> 1.5.0)
       rails (>= 3.0.9)
@@ -151,7 +152,7 @@ GEM
     i18n (0.6.0)
     jammit (0.6.3)
       yui-compressor (>= 0.9.3)
-    jquery-rails (1.0.16)
+    jquery-rails (1.0.17)
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.6.1)
@@ -187,7 +188,7 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
-    pry (0.9.7.3)
+    pry (0.9.7.4)
       coderay (~> 0.9.8)
       method_source (~> 0.6.7)
       ruby_parser (>= 2.3.1)
@@ -215,7 +216,8 @@ GEM
       activesupport (= 3.1.1)
       bundler (~> 1.0)
       railties (= 3.1.1)
-    rails-dev-boost (0.1.1)
+    rails-dev-tweaks (0.5.1)
+      rails (~> 3.1.0)
     railties (3.1.1)
       actionpack (= 3.1.1)
       activesupport (= 3.1.1)
@@ -267,7 +269,7 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.30)
+    tzinfo (0.3.31)
     uglifier (1.0.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
@@ -290,7 +292,7 @@ DEPENDENCIES
   locale_detector
   pry-rails
   rails (= 3.1.1)
-  rails-dev-boost
+  rails-dev-tweaks (~> 0.5.1)
   rspec
   rspec-rails
   sass-rails

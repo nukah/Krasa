@@ -6,7 +6,7 @@ gem 'spree', :git => 'git://github.com/spree/spree.git', :tag => 'v0.70.1'
 
 gem 'spree_i18n', :git => 'git://github.com/spree/spree_i18n.git'
 gem 'spree_related_products', :git => 'git://github.com/spree/spree_related_products.git'
-gem 'spree_recently_viewed', :git => 'git://github.com/spree/spree_recently_viewed.git'
+gem 'spree_recently_viewed', :git => 'git://github.com/spree/spree_recently_viewed.git', :ref => '1156bdb9b4b2'
 gem 'activemerchant'
 gem 'locale_detector'
 
@@ -21,7 +21,7 @@ group :production do
 end
 
 group :development do 
-    gem 'rails-dev-boost'
+    gem 'rails-dev-tweaks', '~> 0.5.1'
 #    gem 'active_reload'
     gem 'pry-rails'
 end
