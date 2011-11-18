@@ -21,8 +21,7 @@ group :production do
 end
 
 group :development do 
-    gem 'rails-dev-tweaks', '~> 0.5.1'
-#    gem 'active_reload'
+#    gem 'rails-dev-tweaks', '~> 0.5.1'
     gem 'pry-rails'
 end
 

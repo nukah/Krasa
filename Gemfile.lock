@@ -58,14 +58,14 @@ GIT
 
 GIT
   remote: git://github.com/spree/spree_related_products.git
-  revision: b8f1ca93c80c3767d520f0061f118fea8083fb36
+  revision: 0e899b0d5aacd44dfb61459f9b357cf520313830
   specs:
     spree_related_products (3.2)
       spree_core
 
 GIT
   remote: git://github.com/thoughtbot/factory_girl.git
-  revision: 6bf74f034a56bf495d75fd667db618d6ec662e25
+  revision: 463028d82ec3f874f135e70e3d924122235d3046
   specs:
     factory_girl (2.2.0)
       activesupport
@@ -121,7 +121,7 @@ GEM
     acts_as_list (0.1.4)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
-    braintree (2.13.0)
+    braintree (2.13.1)
       builder (>= 2.0.0)
     builder (3.0.0)
     cancan (1.6.5)
@@ -216,8 +216,6 @@ GEM
       activesupport (= 3.1.1)
       bundler (~> 1.0)
       railties (= 3.1.1)
-    rails-dev-tweaks (0.5.1)
-      rails (~> 3.1.0)
     railties (3.1.1)
       actionpack (= 3.1.1)
       activesupport (= 3.1.1)
@@ -254,7 +252,7 @@ GEM
       sass (>= 3.1.4)
       sprockets (~> 2.0.0)
       tilt (~> 1.3.2)
-    sexp_processor (3.0.7)
+    sexp_processor (3.0.8)
     slop (2.1.0)
     spork (0.9.0.rc9)
     sprockets (2.0.3)
@@ -270,7 +268,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.31)
-    uglifier (1.0.4)
+    uglifier (1.1.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     warden (1.0.6)
@@ -292,7 +290,6 @@ DEPENDENCIES
   locale_detector
   pry-rails
   rails (= 3.1.1)
-  rails-dev-tweaks (~> 0.5.1)
   rspec
   rspec-rails
   sass-rails
